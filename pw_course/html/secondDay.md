@@ -1,16 +1,12 @@
-# notes
+# Notes
 
-  *resume_buliding*
+## _Resume Building_
 
--> the rusume should not be in format in pdf becouse whenever the oppertunity come so you can change it and it is editable.
--> resume should speak
-->at top resume there should be perpose written 
--> the skill should written in bold text .
-->for fresher you should add intership exprenices and project details and its technologies in which it is build.
--> always should be added github links and code so be in good quailty , it is clean and readable.
--> achievement
--> if the cpa is not 9 , you should add only degree name
-
-console.log('hello')
- 
-
+- The resume should **not** be in PDF format because whenever an opportunity comes, it should be easily editable.
+- The resume should **speak for itself** – be clear, concise, and impactful.
+- A **purpose/summary** section should be written at the top of the resume.
+- **Skills** should be written in **bold** to highlight them clearly.
+- For **freshers**, you should add:
+  - **Internship experiences**
+  - **Project details**
+  - **Technologies** used
