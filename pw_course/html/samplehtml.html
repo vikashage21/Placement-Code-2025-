@@ -9,27 +9,27 @@
 
 <body>
 
-    <form action="">
+    <form  method="get">
         <fieldset>
             <legend>
                 user registration!
             </legend>
             <label for="username">Enter you Username</label>
-            <input type="text"></input>
+            <input type="text" name="username" value="admin" disabled id="username"></input>
             <br>
             <label for="Password">Enter you Password</label>
-            <input type="password"></input>
+            <input type="password" name="Password" id="Password" autofocus></input>
             <br>
 
             <!-- creating radio button for gender -->
             <label for="gender"></label>
             <label for="male"></label>
-            <input type="radio" id="male" name="gender">male</input>
+            <input type="radio" id="male" value="male" name="gender">male</input>
             <br>
 
             <label for="female"></label>
 
-            <input type="radio" id="female" name="gender">female</input>
+            <input type="radio" id="female" name="gender" value="female">female</input>
             <br>
 
             <input type="submit">
