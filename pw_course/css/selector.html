@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title>
+    <style>
+        /* universal selector */
+        * {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* element selector */
+        p {
+            font-size: 20px;
+            color: white; /* Added so second <p> is visible */
+            margin: 20px; /* Added spacing */
+        }
+
+        /* id selector */
+        #para {
+            color: white;
+        }
+
+        /* class selector */
+        .styling {
+            font-variant: small-caps;
+        }
+
+        /* child selector */
+        body > p {
+            font-weight: bold;
+        }
+
+        /* descendant selector */
+        body p {
+            text-align-last: center;
+        }
+
+        /* adjacent sibling selector */
+        p + div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        /* attribute selector */
+        [alt="content"] {
+            height: 100px;
+            width: 100px;
+        }
+
+        /* General sibling selector (~) */
+        p ~ img {
+            border: 2px solid white;
+        }
+
+        /* Grouping selector (,) */
+        p, div {
+            border-radius: 10px;
+        }
+
+        /* Pseudo-class selector (:hover) */
+        div:hover {
+            background-color: yellow;
+        }
+
+        /* Pseudo-element selector (::first-letter) */
+        p::first-letter {
+            font-size: 30px;
+            color: orange;
+        }
+
+        /* Negation pseudo-class (:not) */
+        p:not(#para) {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p id="para" class="styling">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, ratione.
+    </p>
+
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi totam ipsa qui aut minima provident, doloribus,
+        consequuntur esse non officia voluptatibus hic obcaecati tempore, natus enim. Architecto rerum commodi
+        aspernatur!
+    </p>
+
+    <img src="#" alt="content">
+
+    <div>
+    </div>
+
+</body>
+
+</html>
