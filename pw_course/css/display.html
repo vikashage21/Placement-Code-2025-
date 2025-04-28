@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display in html</title>
+    <style>
+        /* display inline */
+        .inline {
+            display: inline;
+        }
+        /* display block */
+
+        .block {
+            display: block;
+        }
+        /* display inline block in which we can fix the height and wight */
+
+        .container>p {
+            display: inline-block;
+            height: 100px;
+            width: 500px;
+            text-align: center;
+        }
+        /* display none */
+        .block + span{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="inline">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est vel nihil quisquam eos aliquam modi repellat! Eius
+        aspernatur, ad repellat dolore amet magnam odio facere sapiente recusandae ut accusantium iste!
+    </p>
+
+    <span class="block">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, iusto?
+    </span>
+    <span>
+        other line
+    </span>
+    <div class="container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus quae repellat velit tempore dignissimos
+            iusto? Molestias commodi eaque animi sed beatae sunt atque autem, quae nesciunt eius vel minima quos ab quia
+            numquam placeat recusandae labore maxime hic doloribus unde rem voluptas suscipit consectetur! Laborum,
+            reprehenderit optio? Laudantium, velit nemo.</p>
+    </div>
+
+</body>
+
+</html>
