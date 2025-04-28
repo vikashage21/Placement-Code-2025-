@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo selector</title>
+    <style>
+        /* pseudo class  selector */
+        /* hover */
+        nav>a:hover {
+            background-color: red;
+        }
+
+        /* visited */
+        /* focus */
+        /* link */
+        /* :first-child */
+        /* :nth-child */
+        /* pseudo element selector */
+
+        p::first-line {
+            color: violet;
+        }
+
+        p::after {
+            content: 'vikash kumar';
+            color: yellow;
+        }
+
+        p::before {
+            content: "Learn css ";
+        }
+
+        p::selection {
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="" src="#">google</a>
+        <a href="" src="#">google</a>
+        <a href="" src="#">google</a>
+    </nav>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, earum necessitatibus aliquid dicta enim quam
+        ea at repudiandae omnis, cupiditate aperiam suscipit quae, fugiat quisquam iure harum id soluta beatae!</p>
+
+</body>
+
+</html>
