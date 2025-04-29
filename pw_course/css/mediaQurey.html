@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media query </title>
+
+    <style>
+        body {
+            background-color: red;
+        }
+
+        div {
+            font-size: x-large;
+            text-align: center;
+        }
+
+        div::after {
+            content: "welcome to the demo";
+        }
+
+        @media (min-width:900px) {
+            /* if viewport is atleast 900px */
+
+            body {
+                background-color: aliceblue;
+            }
+
+            div::after {
+                content: "wow its working";
+            }
+
+
+        }
+
+        /* new syntax to deal media Query */
+
+        @media (400px <=width <=700px) {
+            body {
+                background-color: brown;
+            }
+
+            div::after {
+                content: 'working good with compression symbol'
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+</body>
+
+</html>
