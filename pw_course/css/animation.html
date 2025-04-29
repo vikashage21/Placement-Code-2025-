@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        /* <!-- creating animation -->
+ 
+ <!-- notes -->
+ 
+ <!-- @keyframes --> */
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name: colorChange;
+            position: relative;
+            animation-duration: 10s;
+            animation-delay: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                background-color: red;
+                top: 0px;
+                left: 0px;
+            }
+
+            25% {
+
+                background-color: yellow;
+                top: 0px;
+                left: 200px;
+            }
+
+            50% {
+                background-color: grey;
+                top: 200px;
+                left: 200px;
+            }
+
+            75% {
+                background-color: aquamarine;
+                top: 200px;
+                right: 0px;
+            }
+
+            100% {
+                background-color: violet;
+                t0p: 0px;
+                left: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+    </div>
+
+    <p>
+        this is good place for creating to animate
+    </p>
+
+
+</body>
+
+</html>
