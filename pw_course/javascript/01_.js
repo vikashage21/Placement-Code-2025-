@@ -35,3 +35,17 @@ console.log("final amount to paid" , total)
 let pwDsaCourse =500;
 console.log('final paid amount ', pwDsaCourse+gst);
 
+let value = true;
+let value2 =false;
+
+console.log(value && value2)   
+// output  :- false
+
+let gmailAccount = true;
+let gitHubAccount = true;
+let linkedInAccount =true;
+
+// output :- true
+
+console.log(gmailAccount || gitHubAccount || linkedInAccount)
+
