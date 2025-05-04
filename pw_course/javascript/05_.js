@@ -52,7 +52,7 @@ console.log(newMessage)
 // function with default parameter
 
 function sum(num, num2 = 10) {
-    return num + num
+    return num + num2
 
 }
 
@@ -68,6 +68,10 @@ console.log(addedNum)
 // unlimited parameters in functions
 
 function sumOfAllParameters() {
+
+
+
+
     let sum = 0;
     for (let i = 0; i < arguments.length; i++) {
 
@@ -82,4 +86,46 @@ function sumOfAllParameters() {
 let m = sumOfAllParameters(4, 5, 6, 4, 6);
 
 console.log(m)
+
+
+// arrow function
+
+let arr = () => {
+
+    console.log()
+
+}
+
+
+// anonymous function 
+
+let x = function () {
+    console.log("welcome")
+}
+
+// print the value
+x();
+
+// calling the function 
+
+console.log(x)
+
+
+    // iife :-
+
+
+
+    // (function iife() {
+    //     console.log('hello world');
+    // })();
+
+
+    // (function (x) {
+
+    //     console.log(x * x)
+    // })(5)
+
+
+    // self invoking function :-  Immediately Invoked Function Expression
+
 
