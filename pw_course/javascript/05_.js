@@ -22,3 +22,28 @@ let a = sqr(8)
 
 
 console.log(a)
+
+
+// function with no parameter and no  return value
+function greet (){
+    console.log('welcome')
+}
+
+
+
+
+function print(){
+ return 'i am happy to learn full stack from pw skills '
+}
+
+
+// capture the value of a variable in js using let keyword
+
+let message = print()
+
+// new message 
+
+let newMessage = message + "Enroll now :- Dsa ";
+
+
+console.log(newMessage)
