@@ -1,6 +1,6 @@
 // functions in js
 
-function greet(){
+function greet() {
     console.log("Hello World");
 }
 
@@ -8,7 +8,7 @@ function greet(){
 
 // parameter
 
-function sqr (x){ 
+function sqr(x) {
     return Math.sqrt(x);
 }
 
@@ -16,7 +16,7 @@ function sqr (x){
 greet()
 
 
-let a = sqr(8) 
+let a = sqr(8)
 
 // argument is 8
 
@@ -25,15 +25,15 @@ console.log(a)
 
 
 // function with no parameter and no  return value
-function greet (){
+function greet() {
     console.log('welcome')
 }
 
 
 
 
-function print(){
- return 'i am happy to learn full stack from pw skills '
+function print() {
+    return 'i am happy to learn full stack from pw skills '
 }
 
 
@@ -51,8 +51,8 @@ console.log(newMessage)
 
 // function with default parameter
 
-function sum (num, num2=10){
-    return num+num
+function sum(num, num2 = 10) {
+    return num + num
 
 }
 
@@ -63,3 +63,23 @@ let addedNum = sum(10)
 
 
 console.log(addedNum)
+
+
+// unlimited parameters in functions
+
+function sumOfAllParameters() {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+
+        sum += arguments[i];
+
+
+
+    }
+    return sum;
+}
+
+let m = sumOfAllParameters(4, 5, 6, 4, 6);
+
+console.log(m)
+
