@@ -47,3 +47,19 @@ let newMessage = message + "Enroll now :- Dsa ";
 
 
 console.log(newMessage)
+
+
+// function with default parameter
+
+function sum (num, num2=10){
+    return num+num
+
+}
+
+
+let addedNum = sum(10)
+
+// default parameter always given right to left if you mistaken give the parameter the value will be NaN
+
+
+console.log(addedNum)
