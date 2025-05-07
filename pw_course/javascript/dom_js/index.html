@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- id -->
+
+    <p id="one">
+        pw skills
+    </p>
+
+    <!-- class -->
+    <!-- 
+    <li class="tech">one</li>
+    <li class="tech">two</li>
+    <li class="tech">three</li> -->
+
+    <h4>hey</h4>
+    <h4>hello</h4>
+    <h4>Namaste</h4>
+    <h4>hola</h4>
+
+    <div id="navbar">
+        <a href="">home</a>
+        <a href="">contact</a>
+        <a href="">about</a>
+    </div>
+
+    <ul>
+        <li>One </li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+
+    <button id="jss" onclick="hey()" type="submit"> submit </button>
+
+    <script>
+
+        /* id */
+
+        let pOne = document.getElementById("one");
+        console.log(pOne);
+
+        console.log(pOne.innerText, '||', pOne.innerHTML)
+
+        // class
+
+        // let var2 = document.getElementsByClassName('tech')
+
+        // console.log(var2)
+
+        // var2[1].innerText = "nodejs"
+
+        // tagname
+
+        let tagElement = document.getElementsByTagName("h4")
+
+        console.log(tagElement)
+
+
+        // attribute set
+
+        tagElement[0].setAttribute("id", "heading")
+
+        tagElement[1].style.color = 'red'
+
+
+
+
+        // note :- tagElement.style.color it will not work because i am selecting all element 
+
+        // query selector
+
+        let navbarTag = document.querySelector("#navbar")
+
+        console.log(navbarTag)
+
+        // adding classname and classList
+
+        // navbarTag.className="main_navbar"
+
+        // multiple className - classList
+
+        navbarTag.classList = "navbar main_navbar logo_fix"
+
+
+        // creating element 
+
+        // append child
+
+        let title = document.createElement('h1')
+        title.className = "pwSkills"
+        title.style.fontSize = "pwskills"
+        title.style.fontSize = '25px'
+        title.textContent = "pw skills , namaste";
+        console.log(title)
+        document.body.appendChild(title)
+
+        // removing element
+
+        let ul = document.querySelector('ul')
+        console.log(ul)
+
+        let list = document.querySelectorAll("li")
+
+        console.log(list)
+
+        for (items of list) {
+            console.log(items)
+
+            ul.removeChild(items)
+
+        }
+
+
+        // document.addEventListener('click', hello)
+        // function hello() {
+        //     document.body.innerHTML = "<h1> hello baccho </h1>"
+        // }    
+
+
+        function hey(){
+         let btn=   document.getElementById("jss")
+            btn.innerText ="login";
+        }
+    </script>
+</body>
+
+</html>
