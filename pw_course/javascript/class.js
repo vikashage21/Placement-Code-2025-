@@ -3,13 +3,15 @@ class Product {
 
     // Name;
     // price;
-    // rating;
+    
+    #rating; 
+    // make private member .
     constructor(name, price, rating) {
         console.log('calling the constructor')
         // data member
         this.Name = name;
         this.price = price;
-        this.rating = rating;
+        this.#rating = rating;
 
         // default object return 
 
@@ -30,7 +32,11 @@ class Product {
 
         // refer to the product object
 
-        console.log('displaying the current product', this.Name, this.price, this.rating)
+        console.log('displaying the current product', this.Name, this.price, this.#rating)
+    }
+
+    static custom(){
+        console.log('calling static method ')
     }
 }
 
@@ -39,4 +45,5 @@ const p = new Product("iphone", 10000, 4);
 console.log(p)
 p.display()
 
+Product.custom()
 
