@@ -8,3 +8,6 @@ let person = {
 };
 // Call the greeting method of person object
 person.greeting();
+
+
+
