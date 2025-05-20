@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../assests/img/rm222batch2-mind-03.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    gap: 2.8rem;
+}
+
+nav ul a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+.logo img {
+    width: 6rem;
+    display: block;
+    margin: 0 1.2rem;
+}
+
+.btn {
+    background-color: #f368dc;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 1rem 0;
+}
+
+.Main-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #808080;
+    margin-left: 1.5rem;
+}
+
+.google-play-button img {
+    width: 7.5rem;
+    margin: 0 2.5rem;
+}
+
+.side-content {
+    height: 60vh;
+    margin: 0 2rem;
+    overflow: hidden;
+}
+
+.side-content img {
+    border-radius: 10rem;
+    width: 30rem;
+    margin: 2rem;
+    position: relative;
+    bottom: 10.5rem;
+    border-radius: 1.5rem;
+}
+
+/* adding media query - responsiveness */
+
+@media (max-width: 768px) {
+    nav .logo img {
+        width: 4rem;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .hero-section {
+        margin: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 2.5rem;
+    }
+
+    .heading {
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .Main-heading {
+        font-size: 1rem;
+        margin-left: 2.5rem;
+    }
+
+    .side-content {
+        
+        height: 50vh;
+       
+    }
+
+    .side-content img {
+        width: 90%;
+        margin: auto;
+        bottom: 7.5rem;
+
+    }
+}
