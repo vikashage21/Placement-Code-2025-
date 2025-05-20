@@ -94,11 +94,26 @@ nav ul a {
     position: relative;
     bottom: 10.5rem;
     border-radius: 1.5rem;
+   
+
 }
+
+/* example of globally changes */
+/* :root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
+} */
+
+/* this only changes this particular animation duration */
+.animate__animated.animate__backInRight {
+  --animate-duration: 4s;
+}
+
 
 /* adding media query - responsiveness */
 
 @media (max-width: 768px) {
+   
     nav .logo img {
         width: 4rem;
     }
