@@ -11,7 +11,8 @@ const itemArray = new Array(9).fill('empty');
 const App = () => {
   const [isCross, setIsCross] = useState(false);
   const [winMessage, setWinMessage] = useState('');
-
+  const winSound = new Audio('/sounds/badge-coin-win-14675.mp3');
+  const clickSound = new Audio('/sounds/mouse-click-331781.mp3');
   const reloadGame = () => {
     setIsCross(false);
     setWinMessage('');
@@ -21,18 +22,24 @@ const App = () => {
   const checkIsWinner = () => {
     if (itemArray[0] === itemArray[1] && itemArray[0] === itemArray[2] && itemArray[0] !== 'empty') {
       setWinMessage(`${itemArray[0]} wins`);
+      winSound.play()
     } else if (itemArray[3] !== 'empty' && itemArray[3] === itemArray[4] && itemArray[3] === itemArray[5]) {
       setWinMessage(`${itemArray[3]} wins`);
+      winSound.play()
     } else if (itemArray[6] !== 'empty' && itemArray[6] === itemArray[7] && itemArray[6] === itemArray[8]) {
       setWinMessage(`${itemArray[6]} wins`);
+      winSound.play()
     } else if (itemArray[0] !== 'empty' && itemArray[0] === itemArray[3] && itemArray[0] === itemArray[6]) {
       setWinMessage(`${itemArray[0]} wins`);
+      winSound.play()
     } else if (itemArray[1] !== 'empty' && itemArray[1] === itemArray[4] && itemArray[1] === itemArray[7]) {
       setWinMessage(`${itemArray[1]} wins`);
     } else if (itemArray[2] !== 'empty' && itemArray[2] === itemArray[5] && itemArray[2] === itemArray[8]) {
       setWinMessage(`${itemArray[2]} wins`);
+      winSound.play()
     } else if (itemArray[0] !== 'empty' && itemArray[0] === itemArray[4] && itemArray[0] === itemArray[8]) {
       setWinMessage(`${itemArray[0]} wins`);
+      winSound.play()
     } else if (itemArray[2] !== 'empty' && itemArray[2] === itemArray[4] && itemArray[2] === itemArray[6]) {
       setWinMessage(`${itemArray[2]} wins`);
     } else if (!itemArray.includes('empty')) {
@@ -42,20 +49,60 @@ const App = () => {
     }
   };
 
+  // const ChangeItem = (itemNumber) => {
+  //   clickSound.play();
+  //   if (winMessage) {
+  //     return toast(winMessage, { type: 'success' });
+  //   }
+
+  //   if (itemArray[itemNumber] === 'empty') {
+  //     itemArray[itemNumber] = isCross ? 'cross' : 'circle';
+  //     setIsCross(!isCross);
+  //   } else {
+  //     return toast('Already filled', { type: 'error' });
+  //   }
+
+  //   checkIsWinner();
+  // };
+
   const ChangeItem = (itemNumber) => {
-    if (winMessage) {
-      return toast(winMessage, { type: 'success' });
-    }
+  if (winMessage) {
+    return toast(winMessage, { type: 'success' });
+  }
 
-    if (itemArray[itemNumber] === 'empty') {
-      itemArray[itemNumber] = isCross ? 'cross' : 'circle';
-      setIsCross(!isCross);
-    } else {
-      return toast('Already filled', { type: 'error' });
-    }
-
+  if (itemArray[itemNumber] === 'empty') {
+    itemArray[itemNumber] = isCross ? 'cross' : 'circle';
+    clickSound.play();
+    setIsCross(!isCross);
     checkIsWinner();
-  };
+
+    // If AI's turn (cross), let AI play next
+    if (!isCross) {
+      setTimeout(() => {
+        aiMove();
+      }, 500); // delay for realism
+    }
+  } else {
+    return toast('Already filled', { type: 'error' });
+  }
+};
+
+// AI Move Logic
+const aiMove = () => {
+  if (winMessage) return;
+
+  const emptyIndices = itemArray
+    .map((item, index) => (item === 'empty' ? index : null))
+    .filter(index => index !== null);
+
+  if (emptyIndices.length === 0) return;
+
+  const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+  itemArray[randomIndex] = 'cross';
+  clickSound.play();
+  setIsCross(false);
+  checkIsWinner();
+};
 
   return (
     <Container className="p-5">
