@@ -1,36 +1,65 @@
-import React from 'react'
-import { useState } from "react"
+import React, { Fragment } from 'react'
+import Provider from './provider.js';
+import Context from './context.js'
 
-
-// creating  grandchild
-
-const GrandChild = (props) => {
-  return (
-    <div>
-      <h3>
-        grandchild:</h3>
-      <Child brand={props.brand} />
-    </div>
-  )
+const Agents = () => {
+  return <AgentOne />
 }
 
-// creating a child
+const AgentOne = () => {
+  return <AgentTwo />
 
-const Child = (props) => {
+}
 
+const AgentTwo = () => {
+  return <AgentBond />
+
+}
+const AgentBond = () => {
   return (
-    <div>
-      <h2> child: {props.brand} </h2>
-    </div>
+    <Context.Consumer>
+      {
+        (context) => (
+          <Fragment>
+            <h3>
+              Agent information
+            </h3>
+
+            <p>
+              mission name :{
+                context.data.mname
+              }
+            </p>
+            <h2>
+              mission status:
+              {
+                context.data.accept
+              }
+              <button onClick={context.isMissionAccepted}>click on me</button>
+
+            </h2>
+          </Fragment>
+
+        )
+      }
+
+    </Context.Consumer>
+
   )
+
 }
 
 function App() {
-  const [brand, setBrand] = useState('apple')
   return (
     <div>
-      <Child brand={brand} />
-      <GrandChild brand={brand}/>
+
+      <h1>
+        context api
+      </h1>
+
+      <Provider>
+        <Agents />
+      </Provider>
 
     </div>
   )
