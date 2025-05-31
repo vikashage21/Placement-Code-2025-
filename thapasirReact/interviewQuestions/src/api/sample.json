@@ -1,0 +1,23 @@
+[
+  {
+    "id": "tv001",
+    "name": "The Mandalorian",
+    "img_url": "https://image.tmdb.org/t/p/w500/sample1.jpg",
+    "rating": 6.6,
+    "description": "The Mandalorian is a popular TV series known for its gripping plot and amazing characters.",
+    "cast": ["Bryan Cranston", "Steve Carell", "Millie Bobby Brown"],
+    "genre": ["Thriller", "Fantasy"],
+    "watchurl": "https://watch.example.com/the-mandalorian"
+  },
+  {
+    "id": "tv002",
+    "name": "House of the Dragon",
+    "img_url": "https://image.tmdb.org/t/p/w500/sample2.jpg",
+    "rating": 7.3,
+    "description": "House of the Dragon is a popular TV series known for its gripping plot and amazing characters.",
+    "cast": ["Pedro Pascal", "Antony Starr", "Travis Fimmel"],
+    "genre": ["Comedy", "Thriller"],
+    "watchurl": "https://watch.example.com/house-of-the-dragon"
+  },
+  ...
+]
