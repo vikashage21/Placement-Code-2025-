@@ -1,14 +1,11 @@
 import React from 'react';
 
-
 function Cards({ items }) {
-
-
   return (
     <div className="bg-white rounded-2xl p-4 w-full max-w-4xl mx-auto shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row">
-      
+
       {/* Image Section */}
-      <div className="w-full md:w-2/3  h-64 md:h-auto">
+      <div className="w-full md:w-2/3 h-64 md:h-auto">
         <img
           src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
           alt={items.name}
@@ -17,7 +14,7 @@ function Cards({ items }) {
       </div>
 
       {/* Content Section */}
-      <div className="w-full md:w-3/3 p-6 flex flex-col  justify-between">
+      <div className="w-full md:w-3/3 p-6 flex flex-col justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">{items.name}</h2>
 
@@ -26,31 +23,19 @@ function Cards({ items }) {
           )}
 
           <p className="mt-2 text-gray-600 text-sm">
-            <strong>Created By:</strong>{" "}
-            {Array.isArray(items.created_by)
-              ? items.created_by.map((c) => c.name).join(", ")
-              : "N/A"}
+            <strong>Created By:</strong> {items.created_by || "N/A"}
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
-            <strong>Genres:</strong>{" "}
-            {Array.isArray(items.genres)
-              ? items.genres.map((g) => g.name).join(", ")
-              : "N/A"}
+            <strong>Genres:</strong> {items.genres || "N/A"}
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
-            <strong>Language:</strong>{" "}
-            {Array.isArray(items.spoken_languages)
-              ? items.spoken_languages.map((l) => l.english_name).join(", ")
-              : "N/A"}
+            <strong>Language:</strong> {items.spoken_languages || "N/A"}
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
-            <strong>Network:</strong>{" "}
-            {Array.isArray(items.networks)
-              ? items.networks.map((n) => n.name).join(", ")
-              : "N/A"}
+            <strong>Network:</strong> {items.networks || "N/A"}
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
@@ -62,10 +47,7 @@ function Cards({ items }) {
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
-            <strong>Production:</strong>{" "}
-            {Array.isArray(items.production_companies)
-              ? items.production_companies.map((p) => p.name).join(", ")
-              : "N/A"}
+            <strong>Production:</strong> {items.production_companies || "N/A"}
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
@@ -73,8 +55,11 @@ function Cards({ items }) {
           </p>
 
           <p className="mt-1 text-gray-600 text-sm">
-            <strong>Vote Average:</strong> ⭐ {Number(items.vote_average).toFixed(1)} (
-            {Number(items.vote_count).toLocaleString()} votes)
+            <strong>Vote Average:</strong>{" "}
+            <span className={`${items.vote_average >= 7 ? "bg-green-400" : "bg-yellow-400"} rounded-sm p-1`}>
+              ⭐ {Number(items.vote_average).toFixed(1)}
+            </span>{" "}
+            ({Number(items.vote_count).toLocaleString()} votes)
           </p>
 
           <p className="mt-4 text-gray-700 text-sm leading-relaxed">
@@ -90,9 +75,9 @@ function Cards({ items }) {
               href={items.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              className={`${items.vote_average >= 7 ? "bg-green-400" : "bg-amber-400"} rounded-sm p-1 inline-block text-white px-4 py-2 hover:bg-blue-700 transition`}
             >
-              Visit Homepage
+              WATCH NOW
             </a>
           </div>
         )}
