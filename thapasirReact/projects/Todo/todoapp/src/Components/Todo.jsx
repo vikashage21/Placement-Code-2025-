@@ -28,27 +28,39 @@ function Todo() {
   // todo date
 
 
-useEffect(()=>{
+  useEffect(() => {
 
-  const interval =  setInterval(() => {
-
-
-    const now = new Date();
-    const formateDate = now.toLocaleDateString()
-    const formateTime = now.toLocaleTimeString()
-
-    setDate(`${formateDate} - ${formateTime}`)
-
-  }, 1000);
-
-  return ()=> clearInterval(interval)
+    const interval = setInterval(() => {
 
 
+      const now = new Date();
+      const formateDate = now.toLocaleDateString()
+      const formateTime = now.toLocaleTimeString()
 
-},[])
+      setDate(`${formateDate} - ${formateTime}`)
+
+    }, 1000);
+
+    return () => clearInterval(interval)
 
 
 
+  }, [])
+
+
+
+  const handelDeleteHandle = (value) => {
+
+    // filter the todoList to remove the item that matches the value
+
+    todoList.filter((item) => item == value ? todoList.pop(item) : item)
+
+  }
+
+
+  const handelDeleteAll =()=>{
+    setTodoList([])
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -59,9 +71,9 @@ useEffect(()=>{
           <h2 className='flex justify-center items-center m-2'>
             {
               date
-              
+
             }
-           
+
 
           </h2>
         </header>
@@ -80,22 +92,30 @@ useEffect(()=>{
           >
             Add Task
           </button>
+
+          
         </form>
 
         <div className="space-y-2 ">
           {todoList.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-200 p-2 rounded-md text-gray-800 shadow-sm  justify-between items-center m-auto flex "
+              className="bg-gray-200 p-2 rounded-md text-gray-800 shadow-sm  justify-between items-center  flex"
             >
               {item}
 
               <div className="btn container flex m-auto text-center items-center justify-center gap-5">
-                <button className='bg-red-300 py-1 px-5 rounded-sm hover:bg-red-500 '> <span> <RxCross1 /> </span> </button>
-                <button className='bg-blue-500 py-1 px-5 rounded-sm hover:bg-blue-700 '> <span> <IoIosDoneAll /> </span> </button>
+                <button className='bg-red-300 py-2 px-2 rounded-full hover:bg-red-500 ' onClick={() => handelDeleteHandle(item)}> <span> <RxCross1 /> </span> </button>
+                <button className='bg-blue-500 py-2 px-2 rounded-full hover:bg-blue-700 '> <span> <IoIosDoneAll /> </span> </button>
               </div>
             </div>
           ))}
+
+          <div className="btn flex justify-center items-center ">
+            <button className='bg-blue-500 p-2 rounded-sm text-white font-light' onClick={handelDeleteAll}>
+              Clear All
+            </button>
+          </div>
         </div>
       </div>
     </div>
