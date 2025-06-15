@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RxCross1 } from "react-icons/rx";
 
 import { IoIosDoneAll } from "react-icons/io";
@@ -28,10 +28,9 @@ function Todo() {
   // todo date
 
 
+useEffect(()=>{
 
-
-
-  setInterval(() => {
+  const interval =  setInterval(() => {
 
 
     const now = new Date();
@@ -41,6 +40,15 @@ function Todo() {
     setDate(`${formateDate} - ${formateTime}`)
 
   }, 1000);
+
+  return ()=> clearInterval(interval)
+
+
+
+},[])
+
+
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
