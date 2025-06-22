@@ -4,9 +4,19 @@ import TodoForm from './TodoForm';
 import TodoDate from './TodoDate';
 import TodoList from './TodoList';
 
+const todokey = "reactTodo"
+
 function Todo() {
 
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(
+    () => {
+      const rawTodos = localStorage.getItem(todokey)
+
+      if (!rawTodos) return [];
+
+      return JSON.parse(rawTodos)
+    }
+  );
 
 
   const handleFormSubmit = (inputValue, setInputValue) => {
@@ -14,7 +24,7 @@ function Todo() {
     const { id, content, checked } = inputValue
 
     if (!content) return;
-    
+
 
     // if (todoList.includes(inputValue.trim())) {
     //   setInputValue('');
@@ -27,14 +37,16 @@ function Todo() {
 
     setTodoList((prev) => [...prev, { id, content, checked }]);
     setInputValue({
-        id: '',
+      id: '',
       content: '',
       checked: false
     });
   };
 
 
+  // todo adding data localstorage
 
+  localStorage.setItem(todokey, JSON.stringify(todoList))
 
 
   const handelDeleteHandle = (value) => {
@@ -72,7 +84,7 @@ function Todo() {
       }
     })
 
-setTodoList(updatedTask)
+    setTodoList(updatedTask)
 
   }
   return (
