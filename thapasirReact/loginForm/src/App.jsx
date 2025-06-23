@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <div className="flex flex-col gap-4 items-center justify-center min-h-screen bg-gray-100 p-4" >
-      <h1 className='text-2xl font-bold mb-4 text-gray-800'>jd
+      <h1 className='text-2xl font-bold mb-4 text-gray-800'>
         login form
       </h1>
       <form action="#" onSubmit={handelSubmit}>
