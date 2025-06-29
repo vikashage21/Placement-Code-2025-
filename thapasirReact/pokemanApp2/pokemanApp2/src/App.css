@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.holo-bg {
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4), transparent 60%),
+    repeating-radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 10px, 20px);
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  opacity: 0.5;
+  z-index: 0;
+}
