@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 30vh;
+  width: 20vw;
+  /* display: inline-block; */
+  margin-top: 150px;
+  box-shadow: 2px 2px 5px 1px;
+}
+.btn{
+  padding: 15px 15px;
+  border-radius: 5px ;
+  background-color: rgba(0, 0, 255, 0.708);
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
