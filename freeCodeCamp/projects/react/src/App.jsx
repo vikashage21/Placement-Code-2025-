@@ -1,25 +1,23 @@
-import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom'
-import HomePage from './pages/Home/HomePage'
-import AuthPage from './pages/Auth/AuthPage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PageLayout from '../src/Layouts/PageLayout/PageLayout.jsx';
+import HomePage from './pages/Home/HomePage.jsx';
+import AuthPage from './pages/Auth/AuthPage';
+import ProfilePage from './pages/Profile/ProfilePage.jsx';
 
 function App() {
+  return (
+    <BrowserRouter>
+      <PageLayout> {/* 💡 Wrap everything here */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/profile" element={<ProfilePage />} /> */}
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
-  const router = createBrowserRouter(
-    [
-
-    {
-      path:'/auth',
-      element:<AuthPage/>
-    },
-    {
-      path:'/',
-      element:<HomePage/>
-    }
-     
-    ]
-  )
-
-  return <RouterProvider router={router}></RouterProvider>
+        </Routes>
+      </PageLayout>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

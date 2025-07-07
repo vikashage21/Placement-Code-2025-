@@ -5,7 +5,7 @@ function AuthPage() {
   return (
      <div className="flex justify-center items-center min-h-screen bg-gray-100">
       {/* Left side image */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center ">
         <img src={authImage} alt="auth" className=" h-[64vh] object-contain" />
       </div>
 
