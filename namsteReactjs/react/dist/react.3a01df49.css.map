@@ -1,0 +1,1 @@
+{"mappings":"AAAA","sources":["style.css"],"sourcesContent":["#container{\r\n    width: 150px;\r\n    height: 150px;\r\n    background-color: red;\r\n}"],"names":[],"version":3,"file":"react.3a01df49.css.map","sourceRoot":"/__parcel_source_root/"}
