@@ -56,10 +56,9 @@ function checkAnswer(idx) {
     } else {
         reset()
         h2.innerText = `Game Over, Press any key to restart , your scored was ${level}`;
-        document.querySelector('body').style.backgroundColor='red';
+        document.body.style.backgroundColor='red';
         setTimeout(() => {
-        document.querySelector('body').style.backgroundColor='black';
-
+            document.body.style.backgroundColor='black';
             
         }, 150);
     }
