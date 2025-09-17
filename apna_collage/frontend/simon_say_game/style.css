@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}
+
+.btn-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 1.5rem;
+    
+    gap: 20px;
+}
+.btn{
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.green{
+    background-color: rgba(164, 211, 164, 0.495);
+}
+.red{
+    background-color: rgba(255, 0, 0, 0.452);
+}
+.yellow{
+    background-color: rgba(231, 231, 50, 0.389);
+}
+.blue{
+    background-color: rgba(94, 94, 111, 0.553);
+}
+
+.flash{
+    background-color: #fff;
+}
