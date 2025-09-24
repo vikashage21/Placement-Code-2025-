@@ -14,6 +14,7 @@ console.log(n)
 
 
 //  now receiving the data form dictatory 
+// file name should be index.js.
 
 let info = require('./module/module_dic/fruits/index');
 
