@@ -1,3 +1,3 @@
-let someValue = require('./math')
+let math = require('./math')
 
-console.log(someValue)
+console.log(math.sum(2,3))
