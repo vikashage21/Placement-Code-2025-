@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluffy Panda Instagram Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    .profile {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .profile-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .profile-info h2 {
+      margin: 0;
+    }
+    .verified {
+      color: blue;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    .bio {
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .posts img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .reels {
+      margin-top: 20px;
+    }
+    iframe {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile">
+    <div class="profile-header">
+      <img src="<%=data.profilePic%>" alt="Profile Picture">
+      <div class="profile-info">
+        <h2><%= data.username %> <span class="verified">✔</span></h2>
+        <p> @<%= data.username %></p>
+        <p><strong><%= data.followers %></strong> followers • <strong><%= data.following %></strong> following</p>
+      </div>
+    </div>
+    <p class="bio"><%= data.bio %></p>
+
+    <h3>Posts</h3>
+    <div class="posts">
+      <% for(let post of data.posts)  { %>
+        <img src="<%= post.imageUrl %>" alt="Profile Post">
+        
+     <% }  %>
+
+    </div>
+
+    <h3>Reels</h3>
+    <div class="reels">
+        <% for(let items of data.reels)  { %>
+            <iframe height="315" src="<%= items.videoUrl %>" title="<%= items.id %>" frameborder="0" allowfullscreen></iframe>
+        <% }  %>
+    </div>
+  </div>
+
+</body>
+</html>
+    

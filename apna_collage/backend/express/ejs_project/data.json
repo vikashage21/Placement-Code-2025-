@@ -1,0 +1,151 @@
+[
+  {
+    "username": "fluffy_panda",
+    "name": "Fluffy the Panda",
+    "bio": "🌿 Bamboo lover | 🐼 Professional napper",
+    "profilePic": "https://images.unsplash.com/photo-1533089860892-a7eba99b33a0",
+    "followers": 12500,
+    "following": 180,
+    "postsCount": 3,
+    "verified": true,
+    "highlights": [
+      {
+        "title": "Cute Moments",
+        "cover": "https://images.unsplash.com/photo-1543852786-1cf6624b9987"
+      }
+    ],
+    "posts": [
+      {
+        "id": "p1",
+        "imageUrl": "https://images.unsplash.com/photo-1543852786-1cf6624b9987",
+        "caption": "Just chilling with my bamboo 🐼🌿",
+        "likes": 2400,
+        "comments": [
+          { "user": "wildlife_lover", "text": "Cutest panda ever! ❤️" },
+          { "user": "nature_explorer", "text": "Where do you get all that bamboo?" }
+        ],
+        "createdAt": "2025-09-15T10:30:00Z"
+      },
+      {
+        "id": "p2",
+        "imageUrl": "https://images.unsplash.com/photo-1533089860892-a7eba99b33a0",
+        "caption": "Panda yoga session 🧘🐼",
+        "likes": 3100,
+        "comments": [
+          { "user": "yogi_bear", "text": "Teach me those moves! 😂" }
+        ],
+        "createdAt": "2025-09-14T14:00:00Z"
+      },
+      {
+        "id": "p3",
+        "imageUrl": "https://images.unsplash.com/photo-1516972810927-80185027ca84",
+        "caption": "Sunday nap goals 😴💤",
+        "likes": 5000,
+        "comments": [],
+        "createdAt": "2025-09-10T08:15:00Z"
+      }
+    ],
+    "reels": [
+      {
+        "id": "r1",
+        "videoUrl": "https://www.youtube.com/watch?v=ZRDZlwnTvJU",
+        "views": 15000,
+        "likes": 4200,
+        "caption": "Rolling into the weekend 🐼🔥"
+      },
+      {
+        "id": "r2",
+        "videoUrl": "https://www.youtube.com/watch?v=Xt9xzgDL62Y",
+        "views": 20000,
+        "likes": 8000,
+        "caption": "When the zookeeper plays my favorite song 🎶"
+      }
+    ]
+  },
+  {
+    "username": "leo_the_lion",
+    "name": "Leo the Lion",
+    "bio": "🦁 King of the Jungle | Roaring since 2015",
+    "profilePic": "https://images.unsplash.com/photo-1574515424585-4ff1a3f6ed47",
+    "followers": 9800,
+    "following": 90,
+    "postsCount": 2,
+    "verified": false,
+    "posts": [
+      {
+        "id": "p1",
+        "imageUrl": "https://images.unsplash.com/photo-1581804928342-4e3405e39c91",
+        "caption": "Chilling with the pride 🦁🔥",
+        "likes": 1800,
+        "comments": [
+          { "user": "wild_safari", "text": "What a majestic creature!" }
+        ],
+        "createdAt": "2025-09-12T12:00:00Z"
+      },
+      {
+        "id": "p2",
+        "imageUrl": "https://images.unsplash.com/photo-1558981033-8a5e9a0b42a0",
+        "caption": "Golden hour hits different ✨",
+        "likes": 2100,
+        "comments": [],
+        "createdAt": "2025-09-09T09:00:00Z"
+      }
+    ],
+    "reels": [
+      {
+        "id": "r1",
+        "videoUrl": "https://www.youtube.com/watch?v=6QHnqS6q3co",
+        "views": 13000,
+        "likes": 3900,
+        "caption": "The roar that shook the savannah 🦁🔊"
+      }
+    ]
+  },
+  {
+    "username": "bella_bunny",
+    "name": "Bella the Bunny",
+    "bio": "🥕 Carrot enthusiast | 🐇 Small but speedy",
+    "profilePic": "https://images.unsplash.com/photo-1583337130417-3346a1af7d25",
+    "followers": 6500,
+    "following": 300,
+    "postsCount": 3,
+    "verified": false,
+    "posts": [
+      {
+        "id": "p1",
+        "imageUrl": "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb",
+        "caption": "Snack time! 🥕✨",
+        "likes": 1200,
+        "comments": [
+          { "user": "veglover", "text": "This is too cute to handle 😍" }
+        ],
+        "createdAt": "2025-09-14T11:00:00Z"
+      },
+      {
+        "id": "p2",
+        "imageUrl": "https://images.unsplash.com/photo-1558944351-0a0b6d80e0d6",
+        "caption": "Bunny parkour day 🏃‍♂️",
+        "likes": 1500,
+        "comments": [],
+        "createdAt": "2025-09-13T08:30:00Z"
+      },
+      {
+        "id": "p3",
+        "imageUrl": "https://images.unsplash.com/photo-1574158622682-e40e69881006",
+        "caption": "Me after a long day 😴",
+        "likes": 2000,
+        "comments": [],
+        "createdAt": "2025-09-10T19:00:00Z"
+      }
+    ],
+    "reels": [
+      {
+        "id": "r1",
+        "videoUrl": "https://www.youtube.com/watch?v=2K4iX4vZc6c",
+        "views": 9000,
+        "likes": 2500,
+        "caption": "Bunny zoomies at 2AM 😂"
+      }
+    ]
+  }
+]
