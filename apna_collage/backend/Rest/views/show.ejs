@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>posts</title>
+    <style>
+        /* Posts container */
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Individual post */
+        .post {
+            background: #fff;
+            border: 1px solid #e3e3e3;
+            border-radius: 10px;
+            padding: 20px;
+            width: 50%;
+            margin: 0 auto;
+            transition: 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2d2d2d;
+        }
+
+        .post p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .post-img {
+            width: 50%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="posts">
+
+        <div class="post">
+            <h2>
+                <%= post.username %>
+            </h2>
+            <p>
+                <%= post.content %>
+            </p>
+            <img class=".post-img" src="<%= post.image %>" alt="">
+        </div>
+
+
+    </div>
+</body>
+
+</html>
