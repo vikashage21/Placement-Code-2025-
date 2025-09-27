@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all users</title>
+</head>
+<style>
+    h1 {
+        text-align: center;
+
+
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    div {
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+</style>
+
+<body>
+
+    <h1>
+        list of users
+    </h1>
+
+
+    <div>
+
+        <table>
+            <tr>
+                <th>
+                    id
+                </th>
+                <th>
+                    username
+                </th>
+                <th>
+                    email
+                </th>
+            </tr>
+
+            <% user.forEach(element=> { %>
+
+
+
+                <tr>
+                    <td>
+                        <%= element.id %>
+                    </td>
+                    <td>
+                        <%= element.username %>
+                    </td>
+                    <td>
+                        <%= element.email %>
+                    </td>
+
+                    <td>
+                        <form action="/user/<%= element.id %>/edit">
+                            <button>
+                                edit 
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                <% }) %>
+
+        </table>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
