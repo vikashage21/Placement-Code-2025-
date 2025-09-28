@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatMe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>
+        All chats !
+    </h1>
+
+    <form action="/chats/new" method="get">
+        <button>new chat</button>
+    </form>
+
+    <% chats.forEach(element=> { %>
+        <div class="chat-box">
+
+            <p>
+                from: <%= element.from %>
+            </p>
+
+
+            <p>
+                msg : <%= element.msg %>
+            </p>
+
+            <p>
+                to: <%= element.to %>
+            </p>
+            <p><strong>Time:</strong>
+                <%= element.created_at.toString().split(" ")[4] %></p>
+
+            <form action=" /chats/<%=element._id %>/edit" method="get">
+
+                    <button class="edit_btn">edit</button>
+                    </form>
+                    <form action=" /chats/<%=element._id %>/edit?_method=DELETE" method="post">
+
+                        <button class="edit_btn btn-danger">delete</button>
+                    </form>
+
+        </div>
+
+
+
+
+
+
+        <% }) %>
+
+</body>
+
+</html>
