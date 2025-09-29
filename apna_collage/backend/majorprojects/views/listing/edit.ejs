@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') -%>
+
+
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">Edit Post</h1>
+
+        <form action="/listing/<%= list.id %>?_method=PUT" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title"
+                    value="<%= list.title %>">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="5"
+                    placeholder="Enter your description"><%= list.description %></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL</label>
+                <input type="text" id="image" name="image" class="form-control" placeholder="Enter image URL"
+                    value="<%= list.image %>">
+            </div>
+            <div class="row offset-2">
+                <div class="mb-3 col-2">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" id="price" name="price" class="form-control" placeholder="Enter price"
+                        value="<%= list.price %>">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" id="location" name="location" class="form-control" placeholder="Enter location"
+                        value="<%= list.location %>">
+                </div>
+
+
+                <div class="mb-3 col-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" id="country" name="country" class="form-control" placeholder="Enter country"
+                        value="<%= list.country %>">
+                </div>
+
+            </div>
+
+
+            <div class="mx-auto d-flex w-full justify-content-center align-items-center flex-column gap-2">
+
+                <button type="submit" class="btn btn-success ">Update Post</button>
+                <a href="/listing/<%= list.id %>" class="btn btn-secondary  ms-2">Cancel</a>
+
+            </div>
+        </form>
+    </div>

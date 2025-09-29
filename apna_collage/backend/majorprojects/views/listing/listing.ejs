@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') -%>
+
+
+   <div class="container  my-4">
+    <div class="card w-50 mx-auto h-100">
+        <% if (list.image) { %>
+            <img style="object-fit: cover" src="<%= list.image %>" class="card-img-top w-100 h-100" alt="<%= list.title %>">
+        <% } else { %>
+            <img src="https://via.placeholder.com/600x300?text=No+Image" class="card-img-top" alt="No Image">
+        <% } %>
+        <div class="card-body">
+            <h3 class="card-title"><%= list.title %></h3>
+            <p class="card-text"><strong>Description:</strong> <%= list.description %></p>
+            <p class="card-text"><strong>Price:</strong> ₹<%= list.price %></p>
+            <p class="card-text"><strong>Location:</strong> <%= list.location %></p>
+            <p class="card-text"><strong>Country:</strong> <%= list.country %></p>
+
+            <a href="/listing/<%= list.id %>/edit" class="btn btn-warning me-2">Edit</a>
+
+            <form action="/listing/<%= list.id %>?_method=DELETE" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
