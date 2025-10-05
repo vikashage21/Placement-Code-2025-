@@ -3,41 +3,62 @@
     <div class="container my-5">
         <h1 class="mb-4 text-center">Add New Post</h1>
 
-        <form action="/listing" method="post">
+        <form action="/listing" method="post" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
+
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea id="description" name="description" class="form-control" rows="5"
                     placeholder="Enter your description" required></textarea>
+                <div class="invalid-feedback">
+                    provide valid description !
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Image URL</label>
-                <input type="text" id="image" name="image" class="form-control" placeholder="Enter image URL">
+                <input type="text" id="image" name="image" class="form-control" placeholder="Enter image URL" required>
+                <div class="invalid-feedback">
+                    paste valid image url !
+                </div>
             </div>
 
             <div class="row offset-2">
                 <div class="mb-3 col-2">
                     <label for="price" class="form-label">Price</label>
-                    <input type="text" id="price" name="price" class="form-control" placeholder="Enter price">
+                    <input type="text" id="price" name="price" class="form-control" placeholder="Enter price" required>
+                    <div class="invalid-feedback">
+                        Enter valid price!
+                    </div>
                 </div>
 
-                 <div class="mb-3 col-6 ">
+                <div class="mb-3 col-6 ">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" id="location" name="location" class="form-control" placeholder="Enter location">
+                    <input type="text" id="location" name="location" class="form-control" placeholder="Enter location"
+                        required>
+                    <div class="invalid-feedback">
+                        Enter your location
+                    </div>
                 </div>
 
-                
-            <div class="mb-3 col-2">
-                <label for="country" class="form-label">Country</label>
-                <input type="text" id="country" name="country" class="form-control" placeholder="Enter country">
-            </div>
 
-               
+                <div class="mb-3 col-2">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" id="country" name="country" class="form-control" placeholder="Enter country"
+                        required>
+                    <div class="invalid-feedback">
+                        Enter valid Country.
+                    </div>
+                </div>
+
+
             </div>
 
 
@@ -45,3 +66,5 @@
             <button type="submit" class="btn btn-primary mx-auto w-full d-flex">Add Post</button>
         </form>
     </div>
+
+    <script src="/script.js"></script>

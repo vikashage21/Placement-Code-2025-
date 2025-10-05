@@ -12,13 +12,15 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
+
 </head>
 
 <body>
 
     <%- include('../partials/navbar.ejs') %>
 
-        <main class="container mt-4">
+        <main class="container mt-4 ">
             <%- body %> <!-- ejs-mate will inject child page here -->
         </main>
         <%- include('../partials/footer.ejs') %>
@@ -30,5 +32,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 
 </html>

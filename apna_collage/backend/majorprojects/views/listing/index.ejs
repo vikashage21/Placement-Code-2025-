@@ -25,7 +25,8 @@
                                     <%= e.title %>
                                 </h5>
                                 <p class="card-title text-center">
-                                    ₹<%= e.price.toLocaleString('en-IN') %> / night
+                                    ₹<%= Number(e.price).toLocaleString('en-IN') %> / night
+
                                 </p>
 
                             </div>

@@ -1,0 +1,10 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="container">
+        <!-- adding lottie player to run svg here  -->
+        <dotlottie-wc src="connection-error.json" speed="1" style="width: 400px; height: 500px; display: flex; align-items: center; margin: 0 auto; justify-content: center;" mode="forward" loop
+        autoplay></dotlottie-wc>
+        <div class="alert alert-danger" role="alert">
+            <%= message %>
+        </div>
+
+    </div>

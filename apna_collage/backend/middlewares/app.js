@@ -22,6 +22,7 @@ const asyncwrap = (fn) => {
 
     }
 }
+
 // Routes
 app.get('/api', checkToken, asyncwrap((req, res) => {
     res.send('data');

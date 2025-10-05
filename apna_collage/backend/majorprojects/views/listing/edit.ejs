@@ -4,17 +4,20 @@
     <div class="container my-5">
         <h1 class="mb-4 text-center">Edit Post</h1>
 
-        <form action="/listing/<%= list.id %>?_method=PUT" method="post">
+        <form action="/listing/<%= list.id %>/edit?_method=PUT" method="post" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title"
-                    value="<%= list.title %>">
+                    value="<%= list.title %>" required>
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea id="description" name="description" class="form-control" rows="5"
-                    placeholder="Enter your description"><%= list.description %></textarea>
+                    placeholder="Enter your description" required><%= list.description %></textarea>
+                <div class="valid-feedback">
+                   nice title 
+                </div>
             </div>
 
             <div class="mb-3">
@@ -53,3 +56,5 @@
             </div>
         </form>
     </div>
+
+    <script src="/script.js"></script>
