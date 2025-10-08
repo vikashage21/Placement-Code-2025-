@@ -10,6 +10,7 @@ const errorHandler = require('./utils/errorHandler.js')
 
 const listing = require('./routes/listing.js');
 const review = require('./routes/review.js')
+const session = require('express-session')
 
 
 // setting ejs engine
@@ -47,6 +48,9 @@ async function main() {
 
 // route for root
 
+
+
+
 app.get('/', (req, res) => {
     res.send('working root')
 })
@@ -54,9 +58,33 @@ app.get('/', (req, res) => {
 
 
 
-// listing route .
 
 
+
+// defining express session
+
+const sessionOption = {
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}
+
+app.use(session(sessionOption))
+
+// routes for get session
+
+app.get('/register' , (req,res)=>{
+    let {name='anonyms'} = req.query;
+    req.session.name=name
+    console.log(req.session.name)
+    res.send(name)
+})
+
+app.get('/hello' , (req,res)=>{
+    res.send(`hello ${req.session.name}`)
+    console.log(res.session)
+})
 
 // define for all request 
 
