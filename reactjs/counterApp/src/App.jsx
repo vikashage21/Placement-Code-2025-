@@ -17,6 +17,47 @@ function App() {
     }
   }
 
+  //  handing a form
+
+  const [data, setData] = useState({
+    userName: "",
+    password: "",
+    job: "",
+    desc: "",
+    term: false
+  });
+
+  function handelInput(e) {
+ 
+    setData((pre) => {
+      return {
+        ...pre,
+    [e.target.name]:e.target.value
+      };
+    });
+  }
+  function handleChecked(e) {
+    setData((pre) => {
+      return {
+        ...pre,
+        [e.target.name]: e.target.checked,
+      };
+    });
+  }
+  function handelForm(e) {
+    e.preventDefault();
+    console.log(data);
+    setData(
+      {
+        userName: "",
+        password: "",
+        job: "",
+        desc: "",
+        term: false
+      }
+
+    )
+
   return (
     <>
       <div>
@@ -26,9 +67,47 @@ function App() {
         <button onClick={increment}>increment</button>
         <button onClick={decrement}>decrement</button>
         <Cards></Cards>
+
+        {/*  creating a form  */}
+
+        <form action="" onClick={handelForm}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter your userName"
+            onChange={handelInput}
+            value={data.userName}
+            name="userName"
+          />
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter your password"
+            onChange={handelInput}
+            value={data.password}
+            name="password"
+          />
+
+           <textarea
+            type="text"
+            name="desc"
+            placeholder="Enter your desc"
+            onChange={handelInput}
+            value={data.desc}
+            name="desc"
+          />
+
+          <select name="job" id="job" onChange={handelInput} value={data.job}>
+            <option  >developer</option>
+            <option >programmer</option>
+            <option  >devOps</option>
+          </select>
+          <input type="checkbox" name="term" value={data.term} id="" onChange={handleChecked} />
+          <input type="submit" value="login" />
+        </form>
       </div>
 
-      <Employment/>
+      <Employment />
     </>
   );
 }

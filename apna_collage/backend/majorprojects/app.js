@@ -11,7 +11,11 @@ const errorHandler = require('./utils/errorHandler.js')
 const listing = require('./routes/listing.js');
 const review = require('./routes/review.js')
 const session = require('express-session')
-const flash = require('connect-flash')
+const flash = require('connect-flash');
+const passport = require('passport');
+const localStrategy = require('passport-local')
+const user = require('./models/user.js')
+const userRouter = require('./routes/user.js')
 
 
 // setting ejs engine
@@ -35,21 +39,29 @@ const sessionOption = {
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { 
+    cookie: {
         // secure: true
 
         //  setting the time to expire seven days, twenty four hours , sixty minutes , sixty seconds , 1000 millisecond (one week)
-        expires: Date.now()  +  7 *24 *60 *60 * 1000,
-        maxAge :  7 *24 *60 *60 * 1000,
-        httpOnly : true
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true
 
-     }
+    }
 }
 
 app.use(session(sessionOption))
 app.use(flash())
 
-app.use((req, res , next) =>{
+// middlewares for authorization
+
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new localStrategy(user.authenticate()))
+passport.serializeUser(user.serializeUser())
+passport.deserializeUser(user.deserializeUser())
+
+app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
 
@@ -61,10 +73,27 @@ app.use((req, res , next) =>{
 
 
 
+
+
 // setting router here
 
 app.use('/listing', listing)
 app.use('/listing', review)
+app.use('/' , userRouter)
+
+
+// creating a fake user
+
+app.get('/demouser', async (req, res) => {
+
+    let fakeUser = user({
+        email: 'vk220783@gmail.com',
+        username: "coderalpha"
+    })
+    let registerUser = await user.register(fakeUser, 'helloworld');
+    res.send(registerUser)
+
+})
 
 // defining variables
 
@@ -101,14 +130,14 @@ app.get('/', (req, res) => {
 
 // routes for get session
 
-app.get('/register' , (req,res)=>{
-    let {name='anonyms'} = req.query;
-    req.session.name=name
+app.get('/register', (req, res) => {
+    let { name = 'anonyms' } = req.query;
+    req.session.name = name
     console.log(req.session.name)
     res.send(name)
 })
 
-app.get('/hello' , (req,res)=>{
+app.get('/hello', (req, res) => {
     res.send(`hello ${req.session.name}`)
     console.log(res.session)
 })
