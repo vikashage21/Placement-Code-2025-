@@ -11,6 +11,7 @@ const errorHandler = require('./utils/errorHandler.js')
 const listing = require('./routes/listing.js');
 const review = require('./routes/review.js')
 const session = require('express-session')
+const flash = require('connect-flash')
 
 
 // setting ejs engine
@@ -25,6 +26,40 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+
+
+// defining express session
+
+const sessionOption = {
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        // secure: true
+
+        //  setting the time to expire seven days, twenty four hours , sixty minutes , sixty seconds , 1000 millisecond (one week)
+        expires: Date.now()  +  7 *24 *60 *60 * 1000,
+        maxAge :  7 *24 *60 *60 * 1000,
+        httpOnly : true
+
+     }
+}
+
+app.use(session(sessionOption))
+app.use(flash())
+
+app.use((req, res , next) =>{
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+
+
+    next()
+})
+
+
+
+
 
 // setting router here
 
@@ -61,16 +96,8 @@ app.get('/', (req, res) => {
 
 
 
-// defining express session
 
-const sessionOption = {
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-}
 
-app.use(session(sessionOption))
 
 // routes for get session
 

@@ -1,39 +1,27 @@
 <% layout('layouts/boilerplate') -%>
-
-    <div class="container my-5">
-        <h1 class="mb-4 text-center">All Listings</h1>
-
-        <div class="row">
-            <% allListing.forEach(e=> { %>
-                <div class="col-md-4 mb-4">
-                    <a style="text-decoration: none;" href="/listing/<%=e.id %>">
-                        <div class="card h-100">
-                            <!-- Image wrapper with fixed height -->
-                            <div style="height: 200px; overflow: hidden;">
-                                <% if (e.image) { %>
-                                    <img src="<%= e.image %>" class="card-img-top w-100 h-100 "
-                                        style="object-fit: cover;" alt="<%= e.title %>" loading="lazy">
-                                    <% } else { %>
-                                        <img src="https://via.placeholder.com/300x200?text=No+Image"
-                                            class="card-img-top w-100 h-100" style="object-fit: cover;" alt="No Image"
-                                            loading="lazy">
-                                        <% } %>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title text-center">
-                                    <%= e.title %>
-                                </h5>
-                                <p class="card-title text-center">
-                                    ₹<%= Number(e.price).toLocaleString('en-IN') %> / night
-
-                                </p>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <% }); %>
+<h1 class="mb-5 text-center fw-bold">All Listings</h1>
+<div class="row g-4">
+  <% allListing.forEach(e => { %>
+  <div class="col-md-4 col-sm-6 col-12">
+    <a href="/listing/<%= e.id %>" class="text-decoration-none">
+      <div class="card h-100 shadow-sm rounded-4 overflow-hidden hover-shadow">
+        <div style="height: 220px; overflow: hidden;">
+          <% if (e.image) { %>
+          <img src="<%= e.image %>" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="<%= e.title %>">
+          <% } else { %>
+          <img src="https://via.placeholder.com/300x220?text=No+Image" class="card-img-top" alt="No Image">
+          <% } %>
         </div>
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-dark"><%= e.title %></h5>
+          <p class="text-secondary">₹<%= Number(e.price).toLocaleString('en-IN') %> / night</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <% }) %>
+</div>
 
-    </div>
+<style>
+.hover-shadow:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transition: 0.3s; }
+</style>

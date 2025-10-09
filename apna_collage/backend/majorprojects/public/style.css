@@ -1,3 +1,6 @@
 /* setting height of page  */
 
-  
+  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: 0.3s; }
+input:focus, textarea:focus { box-shadow: 0 0 6px rgba(255,56,92,0.5); border-color: #FF385C; outline: none; }
+.btn-primary { background-color: #FF385C; border-color: #FF385C; }
+.btn-primary:hover { background-color: #e02e52; border-color: #e02e52; }
