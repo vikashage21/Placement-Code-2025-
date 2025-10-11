@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Employment from "./employment";
+import Forms from "./Forms";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -24,15 +25,15 @@ function App() {
     password: "",
     job: "",
     desc: "",
-    term: false
+    term: false,
   });
 
   function handelInput(e) {
- 
+    const { name, value } = e.target;
     setData((pre) => {
       return {
         ...pre,
-    [e.target.name]:e.target.value
+        [name]: value,
       };
     });
   }
@@ -47,16 +48,14 @@ function App() {
   function handelForm(e) {
     e.preventDefault();
     console.log(data);
-    setData(
-      {
-        userName: "",
-        password: "",
-        job: "",
-        desc: "",
-        term: false
-      }
-
-    )
+    setData({
+      userName: "",
+      password: "",
+      job: "",
+      desc: "",
+      term: false,
+    });
+  }
 
   return (
     <>
@@ -70,7 +69,7 @@ function App() {
 
         {/*  creating a form  */}
 
-        <form action="" onClick={handelForm}>
+        <form action="" onSubmit={handelForm}>
           <input
             type="text"
             name="username"
@@ -88,7 +87,7 @@ function App() {
             name="password"
           />
 
-           <textarea
+          <textarea
             type="text"
             name="desc"
             placeholder="Enter your desc"
@@ -98,15 +97,21 @@ function App() {
           />
 
           <select name="job" id="job" onChange={handelInput} value={data.job}>
-            <option  >developer</option>
-            <option >programmer</option>
-            <option  >devOps</option>
+            <option>developer</option>
+            <option>programmer</option>
+            <option>devOps</option>
           </select>
-          <input type="checkbox" name="term" value={data.term} id="" onChange={handleChecked} />
+          <input
+            type="checkbox"
+            name="term"
+            value={data.term}
+            id=""
+            onChange={handleChecked}
+          />
           <input type="submit" value="login" />
         </form>
       </div>
-
+      <Forms />
       <Employment />
     </>
   );
