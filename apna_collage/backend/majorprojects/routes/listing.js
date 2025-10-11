@@ -53,7 +53,7 @@ router.get('/:id', wrapAsync(async (req, res) => {
 
 // post request for new post
 
-router.post('/', validateListing, wrapAsync(async (req, res, next) => {
+router.post('/', islogedIn, validateListing, wrapAsync(async (req, res, next) => {
 
 
     const { title, description, image, price, location, country } = req.body;
