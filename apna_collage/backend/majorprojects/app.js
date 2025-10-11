@@ -61,10 +61,12 @@ passport.use(new localStrategy(user.authenticate()))
 passport.serializeUser(user.serializeUser())
 passport.deserializeUser(user.deserializeUser())
 
+
+// defining locals here - can access anywhere - global
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
-
+    res.locals.currentUser = req.user;
 
     next()
 })
