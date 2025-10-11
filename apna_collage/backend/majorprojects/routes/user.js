@@ -47,7 +47,7 @@ router.get('/login', (req, res) => {
 
 // post request for login
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login' , failureFlash:true }), async (req, res) => {
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), async (req, res) => {
 
     req.flash('success', 'welcome to WonderLust')
     res.redirect('/listing')

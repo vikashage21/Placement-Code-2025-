@@ -8,6 +8,9 @@ const errorHandler = require('../utils/errorHandler.js')
 
 const schemaValidator = require('../utils/joiSchema.js')
 
+const { islogedIn } = require('../middleware.js')
+
+
 // middleware for validation of schema
 
 const validateListing = (req, res, next) => {
@@ -27,7 +30,8 @@ router.get('/', wrapAsync(async (req, res) => {
 }))
 // route for adding new post
 
-router.get('/new', wrapAsync(async (req, res) => {
+router.get('/new', islogedIn, wrapAsync(async (req, res) => {
+
     res.render('listing/new.ejs')
 }))
 
@@ -41,7 +45,7 @@ router.get('/:id', wrapAsync(async (req, res) => {
     console.log(list === null)
     if (!list) {
         req.flash('error', 'Listing you requested for does not exist')
-       return res.redirect('/listing')
+        return res.redirect('/listing')
     }
     res.render('listing/listing.ejs', { list })
 
@@ -87,7 +91,7 @@ router.get('/:id/edit', wrapAsync(async (req, res) => {
 
 // route put request
 
-router.put('/:id/edit', wrapAsync(async (req, res) => {
+router.put('/:id/edit', islogedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
     console.log(id)
     console.log(req.body)
@@ -102,7 +106,7 @@ router.put('/:id/edit', wrapAsync(async (req, res) => {
 
 }))
 
-router.delete('/:id/edit', wrapAsync(async (req, res) => {
+router.delete('/:id/edit', islogedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
     const deletedList = await listing.findByIdAndDelete(id)
     console.log(deletedList)
