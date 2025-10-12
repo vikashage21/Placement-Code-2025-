@@ -2,7 +2,7 @@
 
 <div class="card shadow-sm rounded-4 p-4 mx-auto" style="max-width: 700px;">
   <h2 class="text-center fw-bold mb-4">Add New Post</h2>
-  <form action="/listing" method="post">
+  <form action="/listing" method="post" enctype="multipart/form-data">
     <div class="mb-3">
       <label class="form-label fw-semibold">Title</label>
       <input type="text" name="title" class="form-control" placeholder="Enter title" required>
@@ -13,7 +13,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label fw-semibold">Image URL</label>
-      <input type="text" name="image" class="form-control" placeholder="Enter image URL">
+      <input type="file" name="image" class="form-control" accept="image/*" placeholder="Enter image URL">
     </div>
     <div class="row g-3">
       <div class="col-md-4">

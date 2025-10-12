@@ -11,10 +11,16 @@ const listing = schema({
         type: String
     },
     image: {
-        type: String,
-        default: "https://unsplash.com/photos/layered-blue-mountains-under-a-pastel-sky-7c4Gxa6598I",
-        set: (v) => v === " " ? "https://unsplash.com/photos/layered-blue-mountains-under-a-pastel-sky-7c4Gxa6598I" : v
-    }, price: {
+        url: {
+            type: String,
+            default: "https://res.cloudinary.com/demo/image/upload/v1691500000/default-listing.jpg", // Use a Cloudinary or Unsplash link
+        },
+        filename: {
+            type: String,
+            default: "default-image"
+        }
+    }
+    , price: {
         type: Number
     },
     location: {
