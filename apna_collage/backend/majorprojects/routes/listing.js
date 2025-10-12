@@ -8,7 +8,7 @@ const errorHandler = require('../utils/errorHandler.js')
 
 const schemaValidator = require('../utils/joiSchema.js')
 
-const { islogedIn } = require('../middleware.js')
+const { islogedIn, isOwner } = require('../middleware.js')
 
 
 // middleware for validation of schema
@@ -41,19 +41,21 @@ router.get('/new', islogedIn, wrapAsync(async (req, res) => {
 
 router.get('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
-    const list = await listing.findById(id).populate('reviews');
-    console.log(list === null)
+    const list = await listing.findById(id).populate('reviews').populate('owner');
+
     if (!list) {
         req.flash('error', 'Listing you requested for does not exist')
         return res.redirect('/listing')
     }
+
+
     res.render('listing/listing.ejs', { list })
 
 }))
 
 // post request for new post
 
-router.post('/', islogedIn, validateListing, wrapAsync(async (req, res, next) => {
+router.post('/', islogedIn, isOwner, validateListing, wrapAsync(async (req, res, next) => {
 
 
     const { title, description, image, price, location, country } = req.body;
@@ -69,6 +71,8 @@ router.post('/', islogedIn, validateListing, wrapAsync(async (req, res, next) =>
 
     })
     console.log(allListing)
+
+    allListing.owner = req.user._id;
 
     await allListing.save()
     req.flash('success', 'New listing created')
@@ -93,8 +97,7 @@ router.get('/:id/edit', wrapAsync(async (req, res) => {
 
 router.put('/:id/edit', islogedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
-    console.log(id)
-    console.log(req.body)
+
     const updatedList = await listing.findByIdAndUpdate(id, { ...req.body })
 
     console.log(updatedList)

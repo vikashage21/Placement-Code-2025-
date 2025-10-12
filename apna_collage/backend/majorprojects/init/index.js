@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 const listing = require('../models/listing')
-const initData = require('../init/data');
+let initData = require('../init/data');
 
 
 // defining variables
@@ -24,10 +24,28 @@ async function initDB() {
     // deleting the database
     await listing.deleteMany({})
 
+
+
+
     //    inserting the data 
 
-   await listing.insertMany(initData.data)
-    
+    // next step assigning owner in initdata.
+    initData.data = initData.data.map((obj) => ({
+        ...obj,
+        owner: '68eb9892b0ae2b43d5cf847f' // <-- must be a valid 24-char ID
+    }));
+
+
+
+
+    await listing.insertMany(initData.data)
+
+
+
+
+
+
+
     console.log('data has been save ')
 
 
