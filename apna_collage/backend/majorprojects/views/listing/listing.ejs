@@ -44,42 +44,51 @@
     </div>
   </div>
 
-  <!-- Reviews -->
-  <div class="card shadow-sm rounded-4 p-4 mb-5">
-    <h4 class="fw-bold mb-3">Leave a Review</h4>
-    <form action="/listing/<%= list.id%>/review" method="post">
-      <label for="rating" class="form-label">Rating <span id="ratingValue" class="text-warning fw-bold ms-2">3
-          ⭐</span></label>
-      <input type="range" min="1" max="5" value="3" id="rating" name="review[rating]" class="form-range mb-2">
-      <div class="d-flex justify-content-between text-muted small mb-2">
-        <span>1 ⭐</span><span>2 ⭐</span><span>3 ⭐</span><span>4 ⭐</span><span>5 ⭐</span>
-      </div>
-      <textarea name="review[comment]" class="form-control mb-2" rows="3" placeholder="Write your review..."
-        required></textarea>
-      <button class="btn btn-primary mt-2 w-100">Submit</button>
-    </form>
-  </div>
 
-  <h3 class="mb-3 fw-bold text-center">All Reviews</h3>
-  <div class="row g-4">
-    <% list.reviews.forEach(element=> { %>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="card shadow-sm rounded-4 h-100 p-3">
-          <div class="d-flex justify-content-between mb-2">
-            <h6 class="text-secondary fw-bold"><i class="bi bi-person-circle me-1"></i> Reviewer</h6>
-            <span class="badge bg-warning text-dark">⭐ <%= element.rating %>/5</span>
-          </div>
-          <p class="text-muted">"<%= element.comment %>"</p>
-          <form action="/listing/<%=list.id%>/review/<%= element.id %>?_method=DELETE" method="post">
-            <button class="btn btn-outline-danger w-100 btn-sm">Delete</button>
-          </form>
+  <%if (currentUser) { %>
+
+    <!-- Reviews -->
+    <div class="card shadow-sm rounded-4 p-4 mb-5">
+      <h4 class="fw-bold mb-3">Leave a Review</h4>
+      <form action="/listing/<%= list.id%>/review" method="post">
+        <label for="rating" class="form-label">Rating <span id="ratingValue" class="text-warning fw-bold ms-2">3
+            ⭐</span></label>
+        <input type="range" min="1" max="5" value="3" id="rating" name="review[rating]" class="form-range mb-2">
+        <div class="d-flex justify-content-between text-muted small mb-2">
+          <span>1 ⭐</span><span>2 ⭐</span><span>3 ⭐</span><span>4 ⭐</span><span>5 ⭐</span>
         </div>
-      </div>
-      <% }) %>
-  </div>
+        <textarea name="review[comment]" class="form-control mb-2" rows="3" placeholder="Write your review..."
+          required></textarea>
+        <button class="btn btn-primary mt-2 w-100">Submit</button>
+      </form>
+    </div>
 
-  <script>
-    const ratingInput = document.getElementById('rating');
-    const ratingValue = document.getElementById('ratingValue');
-    ratingInput.addEventListener('input', function () { ratingValue.textContent = `${this.value} ⭐`; });
-  </script>
+    <% }%>
+
+
+
+      <h3 class="mb-3 fw-bold text-center">All Reviews</h3>
+      <div class="row g-4">
+        <% list.reviews.forEach(element=> { %>
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="card shadow-sm rounded-4 h-100 p-3">
+              <p class="text-muted">@<%= element.author.username %></p>
+              <div class="d-flex justify-content-between mb-2">
+
+                <h6 class="text-secondary fw-bold"><i class="bi bi-person-circle me-1"></i> Reviewer</h6>
+                <span class="badge bg-warning text-dark">⭐ <%= element.rating %>/5</span>
+              </div>
+              <p class="text-muted">"<%= element.comment %>"</p>
+              <form action="/listing/<%=list.id%>/review/<%= element.id %>?_method=DELETE" method="post">
+                <button class="btn btn-outline-danger w-100 btn-sm">Delete</button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+
+      <script>
+        const ratingInput = document.getElementById('rating');
+        const ratingValue = document.getElementById('ratingValue');
+        ratingInput.addEventListener('input', function () { ratingValue.textContent = `${this.value} ⭐`; });
+      </script>

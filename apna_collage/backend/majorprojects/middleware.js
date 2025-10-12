@@ -1,4 +1,5 @@
-const listing = require('./models/listing')
+const listing = require('./models/listing');
+const review = require('./models/reviews');
 
 module.exports.islogedIn = (req, res, next) => {
 
@@ -36,3 +37,22 @@ module.exports.isOwner = async (req, res, next) => {
     next()
 
 }
+
+
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const {id, reviewId } = req.params;
+
+    const review = await review.findById(id)
+
+    if (!review.author._id.equals(res.locals.currentUser._id)) {
+
+        req.flash('error', 'you don not have permission to edit ')
+
+        return redirect(`/listing/${id}`)
+
+    }
+
+    next()
+
+}
+
