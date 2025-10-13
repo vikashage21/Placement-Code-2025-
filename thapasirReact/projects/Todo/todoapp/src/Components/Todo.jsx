@@ -1,127 +1,106 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import TodoForm from './TodoForm';
-import TodoDate from './TodoDate';
-import TodoList from './TodoList';
+import TodoForm from "./TodoForm";
+import TodoDate from "./TodoDate";
+import TodoList from "./TodoList";
 
-const todokey = "reactTodo"
+const todokey = "reactTodo";
 
 function Todo() {
+  const [todoList, setTodoList] = useState(() => {
+    const rawTodos = localStorage.getItem(todokey);
 
-  const [todoList, setTodoList] = useState(
-    () => {
-      const rawTodos = localStorage.getItem(todokey)
+    if (!rawTodos) return [];
 
-      if (!rawTodos) return [];
-
-      return JSON.parse(rawTodos)
-    }
-  );
-
+    return JSON.parse(rawTodos);
+  });
 
   const handleFormSubmit = (inputValue, setInputValue) => {
-
-    const { id, content, checked } = inputValue
+    const { id, content, checked } = inputValue;
 
     if (!content) return;
-
 
     // if (todoList.includes(inputValue.trim())) {
     //   setInputValue('');
     //   return;
     // }
 
-    const ifTodoContentMatched = todoList.find((curTask) => curTask.content == content
+    const ifTodoContentMatched = todoList.find(
+      (curTask) => curTask.content == content
     );
     if (ifTodoContentMatched) return;
 
     setTodoList((prev) => [...prev, { id, content, checked }]);
     setInputValue({
-      id: '',
-      content: '',
-      checked: false
+      id: "",
+      content: "",
+      checked: false,
     });
   };
 
-
   // todo adding data localstorage
 
-  localStorage.setItem(todokey, JSON.stringify(todoList))
-
+  localStorage.setItem(todokey, JSON.stringify(todoList));
 
   const handelDeleteHandle = (value) => {
-
-
-
-
     // filter the todoList to remove the item that matches the value
-    const updatedTask =
-      todoList.filter((item) => item.content
-        != value)
-
+    const updatedTask = todoList.filter((item) => item.content != value);
 
     // pop will not because it is method of arrays
 
-    setTodoList(updatedTask)
-
-  }
-
+    setTodoList(updatedTask);
+  };
 
   const handelDeleteAll = () => {
-    setTodoList([])
-  }
-
+    setTodoList([]);
+  };
 
   // handelCheckedTodo functionality
 
   const handelCheckedTodo = (content) => {
-
     const updatedTask = todoList.map((curTask) => {
       if (curTask.content == content) {
-        return { ...curTask, checked: !curTask.checked }
+        return { ...curTask, checked: !curTask.checked };
       } else {
-        return curTask
+        return curTask;
       }
-    })
+    });
 
-    setTodoList(updatedTask)
-
-  }
+    setTodoList(updatedTask);
+  };
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
         <header className="mb-4">
-          <h1 className="text-2xl font-bold text-center text-gray-800">Todo List</h1>
+          <h1 className="text-2xl font-bold text-center text-gray-800">
+            Todo List
+          </h1>
 
-          <h2 className='flex justify-center items-center m-2'>
+          <h2 className="flex justify-center items-center m-2">
             <TodoDate />
-
-
           </h2>
         </header>
 
         <TodoForm todoHandel={handleFormSubmit} />
 
-
         <div className="space-y-2 ">
           {todoList.map((item, index) => (
-            <TodoList item={item.content}
-
+            <TodoList
+              item={item.content}
               key={item.id}
-
-
               checked={item.checked}
-
               onHandelChekckedTodo={handelCheckedTodo}
-
-              onHandeldeleteTodo={handelDeleteHandle} />
+              onHandeldeleteTodo={handelDeleteHandle}
+            />
           ))}
 
-
-
+          <div className="bg-black text-white rounded text-center p-5 mt-3">list of items in list {todoList.length}</div>
 
           <div className="btn flex justify-center items-center ">
-            <button className='bg-blue-500 p-2 rounded-sm text-white font-light' onClick={handelDeleteAll}>
+            <button
+              className="bg-blue-500 p-2 rounded-sm text-white font-light"
+              onClick={handelDeleteAll}
+            >
               Clear All
             </button>
           </div>

@@ -64,7 +64,7 @@ passport.deserializeUser(user.deserializeUser())
 
 // defining locals here - can access anywhere - global
 app.use((req, res, next) => {
-    res.locals.success = req.flash('success'); 
+    res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.currentUser = req.user;
 
@@ -73,29 +73,25 @@ app.use((req, res, next) => {
 
 
 
-
-
-
-
 // setting router here
 
 app.use('/listing', listing)
 app.use('/listing', review)
-app.use('/' , userRouter)
+app.use('/', userRouter)
 
 
 // creating a fake user
 
-app.get('/demouser', async (req, res) => {
+// app.get('/demouser', async (req, res) => {
 
-    let fakeUser = user({
-        email: 'vk220783@gmail.com',
-        username: "coderalpha"
-    })
-    let registerUser = await user.register(fakeUser, 'helloworld');
-    res.send(registerUser)
+//     let fakeUser = user({
+//         email: 'vk220783@gmail.com',
+//         username: "coderalpha"
+//     })
+//     let registerUser = await user.register(fakeUser, 'helloworld');
+//     res.send(registerUser)
 
-})
+// })
 
 // defining variables
 
@@ -118,7 +114,7 @@ async function main() {
 
 
 app.get('/', (req, res) => {
-    res.send('working root')
+    res.redirect('/listing')
 })
 
 

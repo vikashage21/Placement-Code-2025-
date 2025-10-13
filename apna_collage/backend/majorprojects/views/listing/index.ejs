@@ -1,27 +1,77 @@
 <% layout('layouts/boilerplate') -%>
-<h1 class="mb-5 text-center fw-bold">All Listings</h1>
-<div class="row g-4">
-  <% allListing.forEach(e => { %>
-  <div class="col-md-4 col-sm-6 col-12">
-    <a href="/listing/<%= e.id %>" class="text-decoration-none">
-      <div class="card h-100 shadow-sm rounded-4 overflow-hidden hover-shadow">
-        <div style="height: 220px; overflow: hidden;">
-          <% if (e.image) { %>
-          <img src="<%= e.image.url %>" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="<%= e.title %>">
-          <% } else { %>
-          <img src="https://via.placeholder.com/300x220?text=No+Image" class="card-img-top" alt="No Image">
-          <% } %>
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title fw-bold text-dark"><%= e.title %></h5>
-          <p class="text-secondary">₹<%= Number(e.price).toLocaleString('en-IN') %> / night</p>
-        </div>
-      </div>
-    </a>
-  </div>
-  <% }) %>
-</div>
 
-<style>
-.hover-shadow:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transition: 0.3s; }
-</style>
+  
+  
+  <div class="row g-4" id="listingContainer">
+    <% const taxRate=0.18; %>
+      <% allListing.forEach(e=> { %>
+        <div class="col-md-4 col-sm-6 col-12 listing-card" data-title="<%= e.title.toLowerCase() %>"
+          data-location="<%= e.location.toLowerCase() %>" data-price="<%= e.price %>"
+          data-country="<%= e.country.toLowerCase() %>">
+          <a href="/listing/<%= e.id %>" class="text-decoration-none">
+            <div class="card h-100 shadow-sm rounded-4 overflow-hidden hover-shadow">
+              <div style="height: 220px; overflow: hidden;">
+                <% if (e.image) { %>
+                  <img src="<%= e.image.url %>" class="card-img-top w-100 h-100" style="object-fit: cover;"
+                    alt="<%= e.title %>">
+                  <% } else { %>
+                    <img src="https://via.placeholder.com/300x220?text=No+Image" class="card-img-top" alt="No Image">
+                    <% } %>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold text-dark">
+                  <%= e.title %>
+                </h5>
+                <p class="text-secondary mb-1">₹<%= Number(e.price).toLocaleString('en-IN') %> / night</p>
+                <p class="text-success mb-0">₹<%= Number((e.price*(1+taxRate)).toFixed(2)).toLocaleString('en-IN') %>
+                    incl. tax</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <% }) %>
+  </div>
+
+  <style>
+    .hover-shadow:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: 0.3s;
+    }
+  </style>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const minPriceInput = document.getElementById('minPrice');
+    const maxPriceInput = document.getElementById('maxPrice');
+    const countryInput = document.getElementById('countryInput');
+    const listingCards = Array.from(document.querySelectorAll('.listing-card'));
+
+    function filterListings() {
+      const search = searchInput.value.toLowerCase();
+      const minPrice = parseFloat(minPriceInput.value) || 0;
+      const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+      const country = countryInput.value.toLowerCase();
+
+      listingCards.forEach(card => {
+        const title = card.dataset.title;
+        const location = card.dataset.location;
+        const price = parseFloat(card.dataset.price);
+        const cardCountry = card.dataset.country;
+
+        const matchesSearch = title.includes(search) || location.includes(search);
+        const matchesPrice = price >= minPrice && price <= maxPrice;
+        const matchesCountry = country === '' || cardCountry.includes(country);
+
+        if (matchesSearch && matchesPrice && matchesCountry) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Add event listeners
+    [searchInput, minPriceInput, maxPriceInput, countryInput].forEach(input => {
+      input.addEventListener('input', filterListings);
+    });
+  </script>

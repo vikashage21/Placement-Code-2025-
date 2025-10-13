@@ -1,40 +1,65 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-dark" href="/listing">
-      <i class="fa-solid fa-house"></i> Wanderlust
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 sticky-top">
+  <div class="container d-flex align-items-center justify-content-between">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-dark fs-4" href="/listing">
+      <i class="fa-solid fa-house text-danger"></i> Wanderlust
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <!-- Search Filters (centered for desktop only) -->
+    <form id="filterForm" class="d-none d-lg-flex align-items-center gap-2 mx-auto">
+      <input type="text" id="searchInput" class="form-control form-control-sm rounded-pill px-3"
+        placeholder="Search title or location..." style="width: 220px;">
+      <input type="number" id="minPrice" class="form-control form-control-sm rounded-pill px-3"
+        placeholder="Min ₹" style="width: 100px;">
+      <input type="number" id="maxPrice" class="form-control form-control-sm rounded-pill px-3"
+        placeholder="Max ₹" style="width: 100px;">
+      <input type="text" id="countryInput" class="form-control form-control-sm rounded-pill px-3"
+        placeholder="Country" style="width: 130px;">
+      <button type="button" id="applyFilters" class="btn btn-danger rounded-pill px-3">
+        <i class="fa-solid fa-filter"></i>
+      </button>
+    </form>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Nav Links -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav gap-3">
+      <ul class="navbar-nav align-items-lg-center gap-3 mt-3 mt-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link text-dark fw-semibold" href="/listing">Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark fw-semibold" href="/listing/new">Add New</a>
+          <a class="nav-link text-dark fw-semibold" href="/listing">
+            <i class="fa-solid fa-list"></i> Listings
+          </a>
         </li>
 
-        <%if (!currentUser)  { %>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-semibold" href="/listing/new">
+            <i class="fa-solid fa-plus"></i> Add
+          </a>
+        </li>
 
+        <% if (!currentUser) { %>
           <li class="nav-item">
-            <a class="nav-link text-dark fw-semibold" href="/signup">signup New</a>
+            <a class="nav-link text-dark fw-semibold" href="/signup">
+              <i class="fa-solid fa-user-plus"></i> Signup
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark fw-semibold" href="/login">login</a>
+            <a class="nav-link text-dark fw-semibold" href="/login">
+              <i class="fa-solid fa-right-to-bracket"></i> Login
+            </a>
           </li>
-
-
-          <% } %>
-
-            <%if (currentUser)  { %>
-              <li class="nav-item">
-                <a class="nav-link text-dark fw-semibold" href="/logout">logout</a>
-              </li>
-              <% } %>
-
-
-
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-semibold" href="/logout">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+          </li>
+        <% } %>
       </ul>
     </div>
   </div>
