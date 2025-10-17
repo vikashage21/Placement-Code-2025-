@@ -68,6 +68,12 @@ function Todo() {
 
     setTodoList(updatedTask);
   };
+  
+  const totalCheckedItems = todoList.filter((cur)=>cur.checked ).length
+ 
+ 
+  
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
@@ -94,7 +100,7 @@ function Todo() {
             />
           ))}
 
-          <div className="bg-black text-white rounded text-center p-5 mt-3">list of items in list {todoList.length}</div>
+          <div className="bg-pink-400 text-white rounded text-center p-5 mt-3">list of items in list {todoList.length} , you have packed items {totalCheckedItems}</div>
 
           <div className="btn flex justify-center items-center ">
             <button
