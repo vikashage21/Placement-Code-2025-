@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./utils/useOnlineStatus";
+import DinoGame from "../components/DinoGame";
 
-function Products() {
+function Products() {   
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  let onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     const getData = async () => {
@@ -21,6 +25,14 @@ function Products() {
     getData();
   }, []);
 
+  if (onlineStatus == false) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <DinoGame />
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -34,6 +46,7 @@ function Products() {
   return (
     <div className="container py-4">
       <h2 className="text-center mb-4">🛍️ Products</h2>
+
       <div className="row">
         {data.map((item) => (
           <div key={item.id} className="col-md-3 mb-4">
