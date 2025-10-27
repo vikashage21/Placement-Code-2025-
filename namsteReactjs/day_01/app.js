@@ -18,6 +18,10 @@
 
 // div >div > h1 
 
+// import react and react dom
+import React from "react"
+import ReactDOM from "react-dom/client"
+
 // creating heading element 
 const heading = React.createElement('h1', {
     id: 'heading'
