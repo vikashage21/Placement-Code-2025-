@@ -1,0 +1,36 @@
+.product-desc-container {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #00000026 100%);
+  border: 1px solid #ffffff14;
+  transition: all 0.3s ease;
+  height: 50vh;
+}
+
+.product-desc-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+}
+
+.product-desc-container h3 {
+  color: #fff;
+
+  font-size: 1.6rem;
+}
+
+.product-desc-container p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.btn-danger {
+  background-color: #e50914;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #f6121d;
+  transform: scale(1.05);
+}
+a{
+    text-decoration: none !important;
+}

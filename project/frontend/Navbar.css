@@ -1,0 +1,48 @@
+/* ===== navbar.css ===== */
+.navbar {
+  transition: all 0.3s ease-in-out;
+  padding: 0.8rem 1.2rem;
+  background-color: #000;
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #ffc107;
+}
+
+.nav-link {
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107;
+  transform: scale(1.05);
+}
+
+.btn-warning {
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #ffb300;
+  color: #000;
+  transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+    gap: 10px;
+  }
+  .btn-warning {
+    width: 100%;
+  }
+}
