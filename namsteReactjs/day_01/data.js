@@ -1,0 +1,72 @@
+export const restaurantData = [
+  {id:0,
+    title: "Meghna Biryani",
+    desc: "North Indian, Non-Veg, Biryani Speciality",
+    rating: 4.5,
+    time: "30 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/3/300003/7c8a26dc9e76c4baf7f1c639d4e6cc10.jpg"
+  },
+  {id:1,
+    title: "Behrouz Biryani",
+    desc: "Royal Biryani, Mughlai Cuisine",
+    rating: 4.3,
+    time: "25 mins",
+    image: "https://b.zmtcdn.com/data/pictures/4/18339804/6fd3178b33d1b0217e5e82c42f64c89b.jpg"
+  },
+  {id:2,
+    title: "Domino’s Pizza",
+    desc: "Pizza, Italian, Fast Food",
+    rating: 4.1,
+    time: "20 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/1/300001/7b617056d9eaf92a8f7cc7a4d01cdbb3.jpg"
+  },
+  {id:3,
+    title: "KFC",
+    desc: "Fried Chicken, Burgers, Fast Food",
+    rating: 4.0,
+    time: "22 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/4/300004/1c2a0b8e66e29e53e64e304cb9c0c0c3.jpg"
+  },
+  {id:4,
+    title: "Burger King",
+    desc: "Burgers, Fries, Beverages",
+    rating: 4.2,
+    time: "18 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/8/300008/3d2bffef9f35a21ab94c7adbc2597df8.jpg"
+  },
+  {id:5,
+    title: "Paradise Biryani",
+    desc: "Authentic Hyderabadi Biryani & Kebabs",
+    rating: 4.6,
+    time: "35 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/1/3000011/fb2b444b6f64b198c72632eac5390cf1.jpg"
+  },
+  {id:6,
+    title: "Haldiram’s",
+    desc: "Pure Veg, Indian Sweets, Snacks",
+    rating: 4.4,
+    time: "28 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/9/300009/6b3e7cf5b3b2a5b6d34a03d68dbdb8f5.jpg"
+  },
+  {id:7,
+    title: "Biryani Blues",
+    desc: "Hyderabadi Biryani, Rolls, North Indian",
+    rating: 4.3,
+    time: "32 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/0/3000000/bb77a80d3a35b078a80e4ef9ce45427d.jpg"
+  },
+  {id:8,
+    title: "Subway",
+    desc: "Healthy Sandwiches, Salads, Wraps",
+    rating: 4.0,
+    time: "20 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/7/300007/26c708f46a4e61655bb4b4184f35835c.jpg"
+  },
+  {id:9,
+    title: "Pizza Hut",
+    desc: "Pizza, Pasta, Beverages",
+    rating: 4.1,
+    time: "24 mins",
+    image: "https://b.zmtcdn.com/data/pictures/chains/5/300005/69ce9e4cc56f0de62a76b2de18e16a7b.jpg"
+  }
+];
