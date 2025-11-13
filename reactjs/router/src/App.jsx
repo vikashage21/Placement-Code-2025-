@@ -6,7 +6,7 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import Navbar from "../components/Navbar";
-import Products from "../components/Products";
+import {Products} from "../components/Products";
 import ProductDetails from "../components/ProductDetails";
 
 function App() {

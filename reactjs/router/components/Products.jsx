@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import DinoGame from "../components/DinoGame";
+import TopRatedProduct from "./TopRatedProduct";
 
-function Products() {   
+export function Products() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -46,6 +47,10 @@ function Products() {
   return (
     <div className="container py-4">
       <h2 className="text-center mb-4">🛍️ Products</h2>
+      <h1 className="font-monospace">Top Rated Products</h1>
+      <TopRatedProduct items={data} />
+
+      <hr />
 
       <div className="row">
         {data.map((item) => (
@@ -64,6 +69,7 @@ function Products() {
                 <div className="card-body">
                   <h6 className="card-title text-truncate">{item.title}</h6>
                   <p className="fw-bold mb-0">${item.price}</p>
+                  <p className="fw-bold mb-0">{item.rating.rate}</p>
                 </div>
               </div>
             </Link>
@@ -73,5 +79,3 @@ function Products() {
     </div>
   );
 }
-
-export default Products;
