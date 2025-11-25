@@ -1,10 +1,13 @@
 import React from 'react'
 
+import Body from './components/Body'
+
 const App = () => {
   return (
-    <div>
-      <h1 > hello world</h1>
-    </div>
+    <>
+  
+    <Body/>
+    </>
   )
 }
 
