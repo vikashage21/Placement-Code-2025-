@@ -1,8 +1,15 @@
 # netfilx gpt 
  - create vite app
  - configured tailwindcss
-
-
+ - header
+ - routing of app
+ - login form 
+ - sign up form
+ - form validation
+ - useRef hook
+ - firebase setup
+ - deploying the app production
+ - create signup user in firebase   ]
 
 # features
 - browser page 
