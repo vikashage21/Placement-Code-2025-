@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // creating a person class
+
+        class person {
+            //  we are using parameterized constructor
+            constructor(id, name, birthyear) {
+                this.id = id;
+                this.name = name;
+                this.birthyear = birthyear
+            }
+        }
+        class employee extends person {
+            //  we are using parameterized constructor 
+
+            constructor(id, name , birthyear , desg , sal){
+                // parent 
+
+                super(id, name , birthyear);
+
+                this.desg = desg;
+                this.sal = sal;
+
+
+            }
+        }
+        // class test3
+
+        class test3 {
+            static main(){
+                let e1 = new employee(101 , 'vikash' , 19960 , 'dev', 65000);
+                console.log(e1)
+            }
+        }
+
+        test3.main()
+    </script>
+
+</body>
+
+</html>

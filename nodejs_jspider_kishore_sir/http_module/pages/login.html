@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup - user details</title>
+</head>
+
+<body>
+    <form action="/api/signup" method="post">
+
+        <input type="text" placeholder="enter your name" name="username" id="username" /><br /><br />
+        <input type="email" placeholder="enter your email" name="email" id="email" /><br /><br />
+        <input type="password" placeholder="enter your password" name="password" id="password" /><br /><br />
+        <input type=" number" name="age" id="age" placeholder="enter your age">
+        <input type="submit" value="submit" />
+    </form>
+
+    <script>
+        // write here logic of form
+
+        function formHandler(event) {
+            //  selecting input tags
+            const inputs = document.querySelectorAll('input');
+            const userDetails = {
+                username: inputs[0].value,
+                email: inputs[1].value,
+                password: inputs[2].value,
+                age: inputs[3].value
+
+
+            }
+            console.log(userDetails)
+
+            const useFetchMethod = async () => {
+                try {
+                    const response = await fetch('/login', {
+                        method: 'post',
+                        header: {
+                            'content-type': 'application/JSON',
+
+                        },
+                        body: JSON.stringify(userDetails)
+                    })
+                    const data = await response.json();
+                    console.log(data)
+
+                } catch (error) {
+
+                    console.log('user not created', error.message)
+
+                }
+            }
+
+            useFetchMethod()
+
+        }
+
+
+
+        const form = document.querySelector('form').addEventListener('click', () => {
+            event.preventDefault(); // prevent default form submission
+            formHandler();
+        })
+
+    </script>
+</body>

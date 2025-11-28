@@ -14,6 +14,7 @@ class UserClass extends React.Component {
       count: 0,
       count2: 0,
     };
+    
 
     console.log(props);
   }

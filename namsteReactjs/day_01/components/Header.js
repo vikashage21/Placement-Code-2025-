@@ -1,6 +1,12 @@
 
 import { Link } from "react-router-dom";
-const Header = () => {
+import { userContext } from "../utils/userContext";
+import {useContext} from  'react'
+import { useSelector } from "react-redux";
+const Header = ({carts}) => {
+    const cart = useSelector((store) => store.app.items)
+    console.log(cart)
+    const {username}= useContext(userContext)
     return (
         <div className="nav-container">
             <nav className="navbar">
@@ -12,7 +18,10 @@ const Header = () => {
 
                     <Link to='/contact' > Contact</Link>
                     <Link to='/post' > Post</Link>
+                    <Link to='/cart' > cart({cart.length})</Link>
 
+
+                    <p>{username}</p>
 
                 </ul>
             </nav>

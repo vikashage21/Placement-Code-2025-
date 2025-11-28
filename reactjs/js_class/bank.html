@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //  creating bank account
+
+        class BankAccount {
+            #transaction = []
+
+            constructor(id, name, pw) {
+                this.id = id;
+                this.name = name;
+                this.pw = pw
+            }
+
+            deposit(amt) {
+                this.transaction.push(amt)
+            }
+        }
+
+        let a1 = new BankAccount (101 , 'amit ' , 'amit123')
+        console.log(a1)
+        a1.deposit(1000)
+        console.log(a1.#transaction)
+    </script>
+</body>
+
+</html>

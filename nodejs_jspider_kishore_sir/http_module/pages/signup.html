@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form id="signupForm">
+    <input type="text" placeholder="Enter your name" name="username" /><br><br>
+    <input type="email" placeholder="Enter your email" name="email" /><br><br>
+    <input type="password" placeholder="Enter your password" name="password" /><br><br>
+    <input type="number" placeholder="Enter your age" name="age" /><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+document.querySelector("#signupForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const userDetails = {
+        username: form.username.value,
+        email: form.email.value,
+        password: form.password.value,
+        age: form.age.value
+    };
+
+    const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userDetails)
+    });
+
+    const res = await response;
+    const data = await res
+    console.log(data);
+});
+</script>
+
+    
+</body>
+</html>

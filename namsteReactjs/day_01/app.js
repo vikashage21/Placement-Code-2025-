@@ -110,72 +110,53 @@
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import ProductDetails from "./components/ProductDetails";
-import { useState, useEffect } from "react";
 import { createContext } from "react";
 import PostForm from "./components/PostForm";
+import useFetchHook from "./utils/useFetchHook";
+import { Provider } from "react-redux";
+import store from "./utils/appStore.js";
+import Carts from "./components/Carts.js";
 
-// crating functional component - App
-
-
-export const DataContext = createContext()
+export const DataContext = createContext();
 
 const App = () => {
-    const { id } = useParams()
-    console.log(id)
+    // Redux state
+    
 
+    // your custom hook
+    let data = useFetchHook();
+    const recipes = data.recipes || [];
 
-    let [data, setData] = useState('')
-
-
-
-
-
-    async function getData() {
-        let res = await fetch('https://dummyjson.com/recipes');
-        let data = await res.json()
-        setData(data)
-    }
-
-    useEffect(() => {
-        getData()
-
-    }, [])
-
-
-    const recipes = data.recipes || []
-
+    console.log(recipes)
 
     return (
+        <BrowserRouter>
 
-        <>
-            <BrowserRouter>
-
+        <Provider store={store}>
                 <Header />
+
                 <DataContext.Provider value={recipes}>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-
                         <Route path="/contact" element={<Contact />} />
-                        <Route path={'/productdetails/:id'} element={<ProductDetails />} />
+
+                        <Route path="/productdetails/:id" element={<ProductDetails />} />
                         <Route path="/post" element={<PostForm />} />
-
-
+                        <Route path="/cart" element={<Carts />} />
                     </Routes>
                 </DataContext.Provider>
+
                 <Footer />
+
+        </Provider>
             </BrowserRouter>
-
-
-        </>
-
-
-    )
-}
+    );
+};
 
 export default App;

@@ -1,15 +1,25 @@
 import { useParams } from "react-router-dom";
 import { restaurantData } from "../data";
 import { DataContext } from "../app";
-import { useContext } from "react";
-
+import { Component, useContext } from "react";
+import {useDispatch} from 'react-redux'
+import {addItems} from '../utils/appSlice.js'
 const ProductDetails = ({ itemId }) => {
     let { id } = useParams()
 
     let recipes = useContext(DataContext)
+
     const singleProduct = recipes.find((item) => item.id == id)
 
     let { name, rating, desc, time, image, cuisine, ingredients, instructions, prepTimeMinutes, cookTimeMinutes } = singleProduct;
+
+    // adding carts functionality
+    const dispatch = useDispatch()
+
+    const handelCarts =()=>{
+        dispatch(addItems(singleProduct))
+
+    }
 
     return (
         <>
@@ -28,6 +38,7 @@ const ProductDetails = ({ itemId }) => {
                 <p>{cuisine}</p>
                 <p>ingredients : {ingredients.join(',')}</p>
                 <p> ⌛: {prepTimeMinutes} min</p>
+                  <button className="bg-black rounded p-2"  onClick={handelCarts}> add to cart </button>
             </div>
 
             <div className="card" style={{ width: '100%', margin: '2px' }}>
@@ -36,6 +47,7 @@ const ProductDetails = ({ itemId }) => {
                     {instructions}
                 </p>
             </div>
+          
 
 
         </>
@@ -43,3 +55,6 @@ const ProductDetails = ({ itemId }) => {
 }
 
 export default ProductDetails;
+
+
+

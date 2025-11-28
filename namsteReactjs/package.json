@@ -1,6 +1,11 @@
 {
   "dependencies": {
+    "@reduxjs/toolkit": "^2.10.1",
+    "@tailwindcss/vite": "^4.1.17",
     "create": "^0.5.5",
-    "vite": "^7.2.2"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.6",
+    "tailwindcss": "^4.1.17",
+    "vite": "^7.2.4"
   }
 }

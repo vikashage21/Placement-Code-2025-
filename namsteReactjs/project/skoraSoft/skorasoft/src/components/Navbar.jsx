@@ -14,7 +14,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
           <li className="cursor-target"><Link to="/">Home</Link></li>
-          <li ><Link to="/company">Company</Link></li>
+          <li className="cursor-target" ><Link to="/company">Company</Link></li>
           <li className="cursor-target"><Link to="/services">Services</Link></li>
           <li className="cursor-target"><Link to="/news">News & Blogs</Link></li>
           <li className="cursor-target"><Link to="/career">Career</Link></li>

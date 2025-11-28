@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // creating car class
+        class car {
+
+            //  creating a non static method
+
+            start() {
+
+            }
+            accelerate() {
+
+            }
+            brake() {
+
+            }
+        }
+
+        // we are overriding the method of extended class 
+
+        class bmw extends car {
+            start(){
+                console.log('bmw starts')
+            }
+
+            accelerate(){
+                console.log('bmw accelerate')
+            }
+            brake(){
+                console.log('bmw break')
+            }
+        }
+
+         class benz extends car {
+            start(){
+                console.log('benz starts')
+            }
+
+            accelerate(){
+                console.log('benz accelerate')
+            }
+            brake(){
+                console.log('benz break')
+            }
+        }
+
+        class  driver {
+            static driver (car){
+                car.start ();
+                car.accelerate();
+                car.brake()
+            }
+        }
+
+        class test4 {
+            static main(){
+
+                let b1 = new bmw()
+
+                driver.driver(b1)
+
+                let b2 = new benz();
+                driver.driver(b2)
+
+            }
+        }
+
+        test4.main()
+    </script>
+
+</body>
+
+</html>
