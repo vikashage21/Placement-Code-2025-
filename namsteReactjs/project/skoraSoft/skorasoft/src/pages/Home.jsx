@@ -11,7 +11,7 @@ import SpaceFooter from "../components/SpaceFooter";
 const Home = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-      <Navbar />
+     
 
       {/* Hero Section */}
       <HeroSection />

@@ -1,11 +1,53 @@
 // ContactPage.jsx
-import React, { useRef, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Physics, RigidBody } from '@react-three/rapier';
-import { useGLTF } from '@react-three/drei';
-import Hyperspeed from '../components/HyperSpeed';
+import React, { useRef, Suspense , useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Physics, RigidBody } from "@react-three/rapier";
+import { useGLTF } from "@react-three/drei";
+import Hyperspeed from "../components/HyperSpeed";
+import { userPost } from "../hooks/usePost";
+
 
 export default function ContactPage() {
+  //  handing the form here
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const textContent = useRef(null);
+
+  const [loading, setLoading] = useState(false);
+  const [responseMsg, setResponseMsg] = useState("");
+  const handelForm = async () => {
+    const userdata = {
+      name: name.current.value,
+      email: email.current.value,
+      message: textContent.current.value,
+    };
+
+    console.log(userdata)
+
+    // Basic Validation
+    if (!userdata.name || !userdata.email || !userdata.message) {
+      setResponseMsg("All fields are required!");
+      return;
+    }
+
+    setLoading(true);
+
+    // sending the data to backend
+
+    const result = await userPost(userdata);
+
+    console.log(result)
+
+    setLoading(false);
+
+    if (!result?.success) {
+      setResponseMsg(result?.message || "Failed to send message!");
+      return;
+    }
+
+  
+  };
   return (
     <div className="w-full h-screen relative bg-black">
       {/* Hyperspeed Background */}
@@ -14,7 +56,7 @@ export default function ContactPage() {
           effectOptions={{
             onSpeedUp: () => {},
             onSlowDown: () => {},
-            distortion: 'turbulentDistortion',
+            distortion: "turbulentDistortion",
             length: 400,
             roadWidth: 10,
             islandWidth: 2,
@@ -52,7 +94,10 @@ export default function ContactPage() {
       </div>
 
       {/* 3D Astronaut Canvas */}
-      <Canvas camera={{ position: [0, 1, 10], fov: 30 }} className="absolute top-0 left-0 w-full h-full">
+      <Canvas
+        camera={{ position: [0, 1, 10], fov: 30 }}
+        className="absolute top-0 left-0 w-full h-full"
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <Suspense fallback={null}>
@@ -64,24 +109,31 @@ export default function ContactPage() {
 
       {/* Contact Form Overlay */}
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-        <form className="bg-black/70 p-8 rounded-lg flex flex-col gap-4 w-96 text-white z-10">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="bg-black/70 p-8 rounded-lg flex flex-col gap-4 w-96 text-white z-10"
+        >
           <h2 className="text-2xl font-bold text-center mb-4">Contact Us</h2>
           <input
+            ref={name}
             type="text"
             placeholder="Your Name"
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
           <input
+            ref={email}
             type="email"
             placeholder="Your Email"
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
           <textarea
+            ref={textContent}
             placeholder="Your Message"
             rows={4}
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
           <button
+            onClick={handelForm}
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 transition-colors py-2 rounded font-semibold"
           >
@@ -96,7 +148,9 @@ export default function ContactPage() {
 // Floating Astronaut Model
 function Astronaut() {
   const modelRef = useRef();
-  const gltf = useGLTF('https://modelviewer.dev/shared-assets/models/Astronaut.glb'); // place your GLB in public/models
+  const gltf = useGLTF(
+    "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+  ); // place your GLB in public/models
 
   useFrame(() => {
     if (modelRef.current) {
