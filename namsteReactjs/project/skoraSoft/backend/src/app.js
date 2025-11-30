@@ -3,6 +3,9 @@ import dotenv from 'dotenv'
 import { conn } from '../db/conn.js'
 import cors from 'cors'
 import router from '../router/router.js'
+import multer from 'multer'
+import { v2 as cloudinary } from "cloudinary";
+
 
 const app = express()
 
@@ -20,6 +23,32 @@ app.use(
 // ⭐ MOST IMPORTANT — BODY PARSER FIRST
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+
+// ===================== 
+
+
+
+// Cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+
+
+
+
+//  ================ 
+
+// Multer setup
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, "uploads/"),
+  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+});
+const upload = multer({ storage });
+
+
 
 // ⭐ Routes AFTER body parsing
 app.use('/api', router)

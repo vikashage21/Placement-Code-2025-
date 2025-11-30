@@ -6,9 +6,7 @@ import { useGLTF } from "@react-three/drei";
 import Hyperspeed from "../components/HyperSpeed";
 import { userPost } from "../hooks/usePost";
 
-
 export default function ContactPage() {
-  //  handing the form here
 
   const name = useRef(null);
   const email = useRef(null);
@@ -16,6 +14,7 @@ export default function ContactPage() {
 
   const [loading, setLoading] = useState(false);
   const [responseMsg, setResponseMsg] = useState("");
+
   const handelForm = async () => {
     const userdata = {
       name: name.current.value,
@@ -25,20 +24,14 @@ export default function ContactPage() {
 
     console.log(userdata)
 
-    // Basic Validation
     if (!userdata.name || !userdata.email || !userdata.message) {
       setResponseMsg("All fields are required!");
       return;
     }
 
     setLoading(true);
-
-    // sending the data to backend
-
     const result = await userPost(userdata);
-
     console.log(result)
-
     setLoading(false);
 
     if (!result?.success) {
@@ -46,10 +39,13 @@ export default function ContactPage() {
       return;
     }
 
-  
+    // ✅ SUCCESS MESSAGE
+    setResponseMsg("Message sent successfully!");
   };
+
   return (
     <div className="w-full h-screen relative bg-black">
+      
       {/* Hyperspeed Background */}
       <div className="absolute top-0 left-0 w-full h-full">
         <Hyperspeed
@@ -93,13 +89,14 @@ export default function ContactPage() {
         />
       </div>
 
-      {/* 3D Astronaut Canvas */}
+      {/* Astronaut Canvas */}
       <Canvas
         camera={{ position: [0, 1, 10], fov: 30 }}
         className="absolute top-0 left-0 w-full h-full"
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
+
         <Suspense fallback={null}>
           <Physics gravity={[0, -0.2, 0]}>
             <Astronaut />
@@ -107,31 +104,35 @@ export default function ContactPage() {
         </Suspense>
       </Canvas>
 
-      {/* Contact Form Overlay */}
+      {/* Contact Form */}
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
         <form
           onSubmit={(e) => e.preventDefault()}
           className="bg-black/70 p-8 rounded-lg flex flex-col gap-4 w-96 text-white z-10"
         >
           <h2 className="text-2xl font-bold text-center mb-4">Contact Us</h2>
+
           <input
             ref={name}
             type="text"
             placeholder="Your Name"
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
+
           <input
             ref={email}
             type="email"
             placeholder="Your Email"
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
+
           <textarea
             ref={textContent}
             placeholder="Your Message"
             rows={4}
             className="p-2 rounded bg-gray-800 text-white outline-none"
           />
+
           <button
             onClick={handelForm}
             type="submit"
@@ -139,6 +140,12 @@ export default function ContactPage() {
           >
             Send
           </button>
+
+          {/* SUCCESS / ERROR MESSAGE */}
+          {responseMsg && (
+            <p className="text-center text-sm mt-2">{responseMsg}</p>
+          )}
+
         </form>
       </div>
     </div>
@@ -150,7 +157,7 @@ function Astronaut() {
   const modelRef = useRef();
   const gltf = useGLTF(
     "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-  ); // place your GLB in public/models
+  );
 
   useFrame(() => {
     if (modelRef.current) {
