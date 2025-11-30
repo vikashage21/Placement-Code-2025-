@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllUsers, userPost, adminLogin, getAllMessages, getBlogs, singleBlogs, chatBot, uploadVideo, getAllVideos , getSingleVideo } from '../controller/controller.js'
+import { getAllUsers, userPost, adminLogin, getAllMessages, getBlogs, singleBlogs, uploadVideo, getAllVideos , getSingleVideo } from '../controller/controller.js'
 import { adminAuth } from '../middlewares/adminAuth.js'
 import multer from 'multer'
 const upload = multer({ dest: "temp/" });
@@ -21,7 +21,7 @@ router.get("/admin/messages", adminAuth, getAllMessages);
 
 router.get('/blogs', getBlogs)
 router.get('/blogs/:slug', singleBlogs)
-router.post('/chat', chatBot)
+// router.post('/chat', chatBot)
 router.post('/upload',upload.fields([
     { name: "video", maxCount: 1 },
     { name: "image", maxCount: 1 }

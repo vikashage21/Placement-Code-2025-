@@ -158,38 +158,38 @@ export const singleBlogs = async (req, res, next) => {
 
 
 
-export const chatBot = async (req, res, next) => {
-  const { message } = req.body;
-  console.log(message)
+// export const chatBot = async (req, res, next) => {
+//   const { message } = req.body;
+//   console.log(message)
 
-  try {
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are Vikash's fitness project chatbot. Answer only fitness and workout related questions.",
-          },
-          { role: "user", content: message },
-        ],
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
-        },
-      }
-    );
+//   try {
+//     const response = await axios.post(
+//       "https://api.openai.com/v1/chat/completions",
+//       {
+//         model: "gpt-3.5-turbo",
+//         messages: [
+//           {
+//             role: "system",
+//             content:
+//               "You are Vikash's fitness project chatbot. Answer only fitness and workout related questions.",
+//           },
+//           { role: "user", content: message },
+//         ],
+//       },
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer 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`,
+//         },
+//       }
+//     );
 
-    res.json({ reply: response.data.choices[0].message.content });
-  } catch (error) {
-    console.log(error.response?.data || error);
-    res.status(500).json({ error: "OpenAI API Error" });
-  }
-}
+//     res.json({ reply: response.data.choices[0].message.content });
+//   } catch (error) {
+//     console.log(error.response?.data || error);
+//     res.status(500).json({ error: "OpenAI API Error" });
+//   }
+// }
 
 //  controller for upload video 
 
